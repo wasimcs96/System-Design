@@ -1,59 +1,55 @@
 <?php
 
-class Customer {
-    private $name;
-    private $email;
-    private $address;
-
-    public function __construct($name, $email, $address) {
-        $this->name = $name;
-        $this->email = $email;
-        $this->address = $address;
-    }
-
-    public function customerDeatils(){
-        echo "Name : ".$this->name; 
-        echo "<br>Email Id : " .$this->email ;
-        echo "<br>Address : ". $this->address;  
-    }
-
-    public function getName(){
-        return $this->name;
-    }
-
-    // Other methods for customer-related functionality
+// DiscountInterface.php
+interface DiscountInterface {
+    public function applyDiscount($price);
 }
 
-class Order {
-    private $orderId;
-    private $totalAmount;
-    private $customer; // Reference to Customer object
+// PercentageDiscount.php
+class PercentageDiscount implements DiscountInterface {
+    private $percentage;
 
-    public function __construct($orderId, $totalAmount, Customer $customer) {
-        $this->orderId = $orderId;
-        $this->totalAmount = $totalAmount;
-        $this->customer = $customer;
+    public function __construct($percentage) {
+        $this->percentage = $percentage;
     }
 
-    public function getOrderDetails() {
-        return "Order ID: {$this->orderId}, Total Amount: {$this->totalAmount}, Customer: {$this->customer->getName()}";
-    }
-
-    public function clientDeatils(){
-        $this->customer->customerDeatils();
+    public function applyDiscount($price) {
+        return $price - ($price * $this->percentage / 100);
     }
 }
 
+// FixedAmountDiscount.php
+class FixedAmountDiscount implements DiscountInterface {
+    private $amount;
 
-// Create a customer
-$customer = new Customer("John Doe", "john@example.com", "123 Main St");
+    public function __construct($amount) {
+        $this->amount = $amount;
+    }
 
-// Create an order associated with the customer
-$order = new Order(1001, 150.00, $customer);
+    public function applyDiscount($price) {
+        return $price - $this->amount;
+    }
+}
 
-// Get order details
-echo $order->getOrderDetails();
-$order->clientDeatils();
+// DiscountProcessor.php
+class DiscountProcessor {
+    public function applyDiscount($price, DiscountInterface $discount) {
+        return $discount->applyDiscount($price);
+    }
+}
+
+$discountProcess = new DiscountProcessor();
+$productPrice = 100;
+
+$percentageDiscount = new PercentageDiscount(25); //  25% off
+echo "After percentage discount: ". $discountProcess->applyDiscount($productPrice, $percentageDiscount). "\n";
+
+$fixedDiscount = new FixedAmountDiscount(20);
+echo "Original price: ", $productPrice, "\n";
+echo "After percentage discount: ", $discountProcess->applyDiscount($productPrice, $fixedDiscount);
+
+
+
 
 
 
