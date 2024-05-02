@@ -12,43 +12,43 @@ you can always expect it to brew coffee without causing a coffee-spillage disast
 //https://blog.devgenius.io/liskov-substitution-principle-lsp-by-using-php-solid-principle-e2c14991945e
 //Exampel without LSP
 
-// abstract class Employee{
-//     Protected int $id;
-//     Protected string $name;
-//     Protected int  $salery;
+abstract class Employee{
+    Protected int $id;
+    Protected string $name;
+    Protected int  $salery;
 
-//     public function __construct(int $id, string $name, int $salery){
-//     }
+    public function __construct(int $id, string $name, int $salery){
+    }
 
-//     abstract public function calculateSalery(int $salery);
-//     abstract public function calculateBonus(int $bonus);
-// }
+    abstract public function calculateSalery(int $salery);
+    abstract public function calculateBonus(int $bonus);
+}
 
-// class ParmanentEmployee extends Employee{
-//     public function calculateSalery(int $salery){
-//         $this->salery = $salery;
-//         return $this->salery;
-//     }
+class ParmanentEmployee extends Employee{
+    public function calculateSalery(int $salery){
+        $this->salery = $salery;
+        return $this->salery;
+    }
 
-//     public function calculateBonus(int $bonus){
-//         $this->salery += $bonus;
-//         return $this->salery;
-//     }
-// }
+    public function calculateBonus(int $bonus){
+        $this->salery += $bonus;
+        return $this->salery;
+    }
+}
 
-// class TemproryEmployee extends Employee{
-//     public function calculateSalery(int $salery){
-//         $this->salery = $salery;
-//         return $this->salery;
-//     }
+class TemproryEmployee extends Employee{
+    public function calculateSalery(int $salery){
+        $this->salery = $salery;
+        return $this->salery;
+    }
 
-//     public function calculateBonus(int $bonus){
-//         throw new Exception('Not applicable.');
-//         // The TemproryEmployee class violates LSP by overriding calculateBonus to throw an exception. 
-//         // This breaks the expected behavior of the base class method, 
-//         // causing issues if a function expects an Employee object to handle a bonus.
-//     }
-// }
+    public function calculateBonus(int $bonus){
+        throw new Exception('Not applicable.');
+        // The TemproryEmployee class violates LSP by overriding calculateBonus to throw an exception. 
+        // This breaks the expected behavior of the base class method, 
+        // causing issues if a function expects an Employee object to handle a bonus.
+    }
+}
 
 //Using LSP in above code
 

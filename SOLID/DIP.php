@@ -2,29 +2,29 @@
 // Dependency Inversion Principle
 //https://blog.devgenius.io/dependency-inversion-principle-dip-by-using-php-solid-principle-e8745d60550f
 
-// class Store{
-//     private $paymentGateway;
-//     function __construct(Stripe $paymentGateway){
-//         $this->paymentGateway = $paymentGateway;
-//     }
+class Store{
+    private $paymentGateway;
+    function __construct(Stripe $paymentGateway){
+        $this->paymentGateway = $paymentGateway;
+    }
 
-//     function paymentProcessCharge(int $chargeAmount){
-//         return $this->paymentGateway->makeCharge($chargeAmount);
-//     }
-// }
-// class Stripe{
-//     private $card;
-//     public function __construct(string $card){
-//         $this->card = $card;
-//     }
-//     public function makeCharge(int $chargeAmount){
-//         echo "Process Amount has been deducted $chargeAmount from your card $this->card";
-//     }
-// }
+    function paymentProcessCharge(int $chargeAmount){
+        return $this->paymentGateway->makeCharge($chargeAmount);
+    }
+}
+class Stripe{
+    private $card;
+    public function __construct(string $card){
+        $this->card = $card;
+    }
+    public function makeCharge(int $chargeAmount){
+        echo "Process Amount has been deducted $chargeAmount from your card $this->card";
+    }
+}
 
-// $stripe = new Stripe("41111111111");
-// $store = new Store($stripe);
-// $store->paymentProcessCharge(100);
+$stripe = new Stripe("41111111111");
+$store = new Store($stripe);
+$store->paymentProcessCharge(100);
 
 // Issues in this pattern
 // Tight Coupling: The Store class is tightly coupled to the Stripe class. This means that if you ever want to change the payment processor (for example, switching from Stripe to PayPal), you would need to modify the Store class directly. This violates the principle of code flexibility and maintainability.
@@ -70,14 +70,13 @@ class Paypal implements PaymentGateway {
     }
 }
 
-// $stripe = new Stripe("41111111111");
-// $store1 = new Store($stripe);
-// $store1->paymentProcessCharge(100);
+$stripe = new Stripe("41111111111");
+$store = new Store($stripe);
+$store->paymentProcessCharge(100);
 
 $paypal = new Paypal("4999999999");
 $store2 = new Store($paypal);
 $store2->paymentProcessCharge(200);
-
 
 
 ?>
