@@ -84,7 +84,7 @@ class ParmanentEmployee extends Employee implements IBonusCalculator{
 }
 
 //Just implements only ISaleryCalculator  interface and use it as normal Employee
-class TemproryEmployee implements ISaleryCalculator {
+class TemproryEmployee implements ISaleryCalculator { //can use Employee class also
     Protected int $id;
     Protected string $name;
     Protected int  $salery;

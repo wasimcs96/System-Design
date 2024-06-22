@@ -1,5 +1,5 @@
 <?php
-// https://blog.devgenius.io/open-closed-principle-ocp-by-using-php-solid-principle-f0ceae519bcf
+//https://blog.devgenius.io/open-closed-principle-ocp-by-using-php-solid-principle-f0ceae519bcf
 //https://medium.com/@aiman.asfia/embracing-the-open-closed-principle-in-laravel-a-real-life-example-2cbfce4b78d6
 interface DiscountInterface {
     public function applyDiscount($price);
@@ -108,7 +108,7 @@ abstract class PaymentProcess{
 }
 
 class CreditCardPayment extends  PaymentProcess {
-    private $serviceCharge = 50;
+    private $serviceCharge = 25;
 
     public function pay(int $amount){
         $this->balance = $this->balance - $amount-$this->serviceCharge; 
@@ -120,14 +120,29 @@ class PaypalPayment extends  PaymentProcess {
     private $serviceCharge = 50;
 
     public function pay(int $amount){
-        $this->balance = $this->balance - $amount-$this->serviceCharge; 
-        echo "Paid successfully through CreditCard. Your current balance is ". $this->balance ."\n";
+        $this->balance = $this->balance - $amount - $this->serviceCharge; 
+        echo "Paid successfully through Paypal. Your current balance is ". $this->balance ."\n";
     }
 }
 
-$payment = new CreditCardPayment("Wasim", "432143214321");
-$payment->pay(100);
-$payment1 = new PaypalPayment("Wasim", "432143214321");
-$payment1->pay(50);
+class MakePayment{
+    Private $paymentProcess;
+    public function __construct(PaymentProcess $paymentProcess){
+        $this->paymentProcess = $paymentProcess;
+    }
+    public function pay(int $amount){
+        $this->paymentProcess->pay($amount);
+    }
+}
+
+
+$CreditCardPayment = new CreditCardPayment("Wasim", "432143214321");
+$makeCreditPayment = new MakePayment($CreditCardPayment);
+$makeCreditPayment->pay(100);
+
+$PaypalPayment = new PaypalPayment("Wasim", "432143214321");
+$makePaypalPayment = new MakePayment($PaypalPayment);
+$makePaypalPayment->pay(100);
+
 
 ?>

@@ -1,0 +1,16 @@
+Creational ->
+1. Singleton
+2. Factory Method
+3. Builder
+4. Abstract
+
+Structural ->
+1. Adapter
+2. Decorator Pattern
+3. Facade Pattern
+
+Behavioral ->
+1. Strategy
+2. Observer
+3. State
+
