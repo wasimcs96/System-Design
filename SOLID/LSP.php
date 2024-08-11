@@ -108,6 +108,50 @@ $TempEmployee = new TemproryEmployee(1, "wasim", 1000000);
 echo $TempEmployee->calculateSalery();
 
 
+//Another Example
+
+class Shape {
+    public function calculateArea() {
+        // Default implementation (not relevant for our example)
+    }
+}
+
+class Rectangle extends Shape {
+    private $width;
+    private $height;
+
+    public function __construct(float $width, float $height) {
+        $this->width = $width;
+        $this->height = $height;
+    }
+
+    public function calculateArea() {
+        return $this->width * $this->height;
+    }
+}
+
+class Circle extends Shape {
+    private $radius;
+
+    public function __construct(float $radius) {
+        $this->radius = $radius;
+    }
+
+    public function calculateArea() {
+        return pi() * $this->radius ** 2;
+    }
+}
+function printArea(Shape $shape) {
+    echo "Area: " . $shape->calculateArea() . PHP_EOL; //if we have class , super to subbclass then it should be work. it is possible due to overwrite function in subclass is exits
+}
+
+$rectangle = new Rectangle(5, 3);
+$circle = new Circle(2);
+
+printArea($rectangle); // Output: "Area: 15"
+printArea($circle);    // Output: "Area: 12.566370614359"
+
+
 
 
 ?>

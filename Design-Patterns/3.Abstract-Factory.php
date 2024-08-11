@@ -1,14 +1,14 @@
 <?php
 //purpose => To create series of related or dependent objects without specifying their concrete classes. Usually the created classes all implement the same interface. The client of the abstract factory does not care about how these objects are created, it just knows how they go together.
 interface CsvWrite{
-    public function write();
+    public function CsvWrite();
 }
 interface JsonWrite{
     public function JsonWrite();
 }
 //For Linux
 class LinuxCsvWriter implements CsvWrite{
-    public function write(){
+    public function CsvWrite(){
         return "linux Csv Writer";
     }
 }
@@ -19,7 +19,7 @@ class LinuxJsonWriter implements JsonWrite{
 }
 //For Window
 class WindowCsvWriter implements CsvWrite{
-    public function write(){
+    public function CsvWrite(){
         return "Window Csv Writer";
     }
 }
@@ -56,10 +56,10 @@ class WindowWriteFactory extends AbstractWriteFactory {
 }
 
 $linuxfactoryClass = new LinuxWriteFactory();
-echo $linuxfactoryClass->createCsvWriteClass()->write(); echo "\n";
+echo $linuxfactoryClass->createCsvWriteClass()->CsvWrite(); echo "\n";
 echo $linuxfactoryClass->createJsonWriteClass()->JsonWrite();echo "\n";
 
 $WindowfactoryClass = new WindowWriteFactory();
-echo $WindowfactoryClass->createCsvWriteClass()->write();echo "\n";
+echo $WindowfactoryClass->createCsvWriteClass()->CsvWrite();echo "\n";
 echo $WindowfactoryClass->createJsonWriteClass()->JsonWrite();echo "\n";
 ?>

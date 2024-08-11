@@ -31,11 +31,11 @@ class SearchEngineFactory{
     }
 } 
 
-// $googleSeachEngine = SearchEngineFactory::createSearchEngine('google');
-// echo $googleSeachEngine->search("Query");
-// echo "\n";
-// $bingSeachEngine = SearchEngineFactory::createSearchEngine('bing');
-// echo $bingSeachEngine->search("Query");
+$googleSeachEngine = SearchEngineFactory::createSearchEngine('google');
+echo $googleSeachEngine->search("Query");
+echo "\n";
+$bingSeachEngine = SearchEngineFactory::createSearchEngine('bing');
+echo $bingSeachEngine->search("Query");
 
 //Another Complex Example
 //Factory method is a creational design pattern which solves the problem of creating product objects without specifying their concrete classes.
@@ -80,8 +80,6 @@ class TwitterConnector implements SocilaNetworkConnector{
         echo "Create a post in Twitter \n";
     }
 }
-
-
 abstract class SocialNetworkPoster{
     abstract public function getSociaNetwork():SocilaNetworkConnector;
 
@@ -130,15 +128,6 @@ $TwitterPoster = new TwitterPoster("email", "password");
 Factory::completeTask($FacebookPoster);
 Factory::completeTask($TwitterPoster);
 
-
-
-
-
-
-
-
-
-//abstract class SocialNetwrokPoster
 
 
 

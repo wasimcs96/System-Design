@@ -17,11 +17,16 @@ class Singleton{
 
 class Logger extends Singleton{
     private $logFile;
-    protected function __construct(){
+    public  function __construct(){
         $this->logFile = "File Path";
     }
+
+    public static function getLoggerInstance(){
+        return static::getInstance();
+    }
+
     public static function log($message) {
-        $logger = static::getInstance(); //Give own refernce to Singlton Class
+        $logger = static::getLoggerInstance(); //Give own refernce to Singlton Class
         $logger::writeFile($message);
     }
     public function writeFile($content){

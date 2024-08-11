@@ -1,83 +1,240 @@
 <?php
-// Dependency Inversion Principle
-//https://blog.devgenius.io/dependency-inversion-principle-dip-by-using-php-solid-principle-e8745d60550f
 
-// class Store{
-//     private $paymentGateway;
-//     function __construct(Stripe $paymentGateway){
-//         $this->paymentGateway = $paymentGateway;
-//     }
 
-//     function paymentProcessCharge(int $chargeAmount){
-//         return $this->paymentGateway->makeCharge($chargeAmount);
-//     }
-// }
-// class Stripe{
-//     private $card;
-//     public function __construct(string $card){
-//         $this->card = $card;
-//     }
-//     public function makeCharge(int $chargeAmount){
-//         echo "Process Amount has been deducted $chargeAmount from your card $this->card";
-//     }
-// }
+class Vehicle{
+    private $vehicleNumber;
+    private $vehicleType;
+    private $vehicleColour;
 
-// $stripe = new Stripe("41111111111");
-// $store = new Store($stripe);
-// $store->paymentProcessCharge(100);
+    public function __construct(string $vehicleNumber, string $vehicleType, string $vehicleColour){
+        $this->vehicleNumber = $vehicleNumber;
+        $this->vehicleType = $vehicleType;
+        $this->vehicleColour = $vehicleColour;
+    }
 
-// Issues in this pattern
-// Tight Coupling: The Store class is tightly coupled to the Stripe class. This means that if you ever want to change the payment processor (for example, switching from Stripe to PayPal), you would need to modify the Store class directly. This violates the principle of code flexibility and maintainability.
-
-// Limited Extensibility: Since the Store class directly depends on the Stripe class, it cannot easily accommodate other payment processors without modification. Adding support for a new payment processor would require changing the Store class, which could introduce errors or unexpected behavior.
-
-// Difficulty in Testing: Testing the Store class in isolation becomes challenging because it's tightly coupled to the Stripe class. This makes it harder to write unit tests for the Store class without also testing the Stripe class.
-
-// Code Change With DIP
-
-interface PaymentGateway{
-    public function makeCharge(int $chargeAmount);
+    public function getVehicleDetails(){
+        return ['type'=>$this->vehicleType, 'number'=>$this->vehicleNumber, 'colour'=>$this->vehicleColour];
+    } 
 }
 
-class Store{
-    private $paymentGateway;
-    function __construct(PaymentGateway $paymentGateway){
-        $this->paymentGateway = $paymentGateway;
+
+class ParkingSlot{
+    private $slotNumber;
+    private $isOccupied;
+    private $vehicleType;
+    private $parkingLotId;
+    private $vehicleInfo;
+    private $floorNumber;
+
+    public function __construct(int $floorNumber, int $slotNumber, string $vehicleType, Vehicle $vehicle){
+        $this->isOccupied = true;
+        $this->slotNumber = $slotNumber;
+        $this->vehicleType = $vehicleType;
+        $this->parkingLotId = $slotNumber;
+        $this->vehicleInfo = $vehicle;
+        $this->floorNumber = $floorNumber;
     }
 
-    function paymentProcessCharge(int $chargeAmount){
-        return $this->paymentGateway->makeCharge($chargeAmount);
+    public function getSlotDetails(){
+        return array('type'=>$this->vehicleType, 
+        'slotNumber'=>$this->slotNumber, 
+        'parkingLotId'=>$this->parkingLotId, 
+        'isOccupied'=>$this->isOccupied,  
+        'vehicleInfo' =>$this->vehicleInfo,
+        'floorNumber'=>$this->floorNumber);
     }
-}
 
-class Stripe implements PaymentGateway {
-    private $card;
-    public function __construct(string $card){
-        $this->card = $card;
+    public function makeFree(){
+        $this->vehicleInfo = null;
+        $this->isOccupied = false;
+        return true;
     }
-    public function makeCharge(int $chargeAmount){
-        echo "Stripe Process Amount has been deducted $chargeAmount from your card $this->card ".'/n';
-    }
-}
 
-class Paypal implements PaymentGateway {
-    private $card;
-    public function __construct(string $card){
-        $this->card = $card;
+    public function makeOccupied(){
+        $this->isOccupied = true;
     }
-    public function makeCharge(int $chargeAmount){
-        echo "Paypal Process Amount has been deducted $chargeAmount from your card $this->card ".'/n';
+
+    public function getParkingLotId(){
+        return $this->parkingLotId;
     }
 }
 
-// $stripe = new Stripe("41111111111");
-// $store1 = new Store($stripe);
-// $store1->paymentProcessCharge(100);
+class ParkingFloorSlots{
+    private int $floorNumber;
+    private int $totalSlots;
+    public array $vehicleTypeSlots = [];
+    private array $slots = [];
+    public int $slotNumber = 1; 
 
-$paypal = new Paypal("4999999999");
-$store2 = new Store($paypal);
-$store2->paymentProcessCharge(200);
+    public function __construct(int $floorNumber, int $totalSlots){
+        $this->floorNumber = $floorNumber;
+        $this->totalSlots = $totalSlots;
+    }
+
+    public function addParkingVehicleTypeWithCapacity(string $vehicleType, int $capacity){
+        $this->vehicleTypeSlots[$this->floorNumber][$vehicleType]['totalSlots'] = $capacity;
+        $this->vehicleTypeSlots[$this->floorNumber][$vehicleType]['availableSlots'] = $capacity;
+        $this->vehicleTypeSlots[$this->floorNumber][$vehicleType]['occupiedSlots'] = 0;
+        $this->vehicleTypeSlots[$this->floorNumber][$vehicleType]['slots'] = [];
+        if($vehicleType == 'Truck')
+            $this->vehicleTypeSlots[$this->floorNumber][$vehicleType]['slots'] = array_fill($this->slotNumber, $capacity, '');
+        if($vehicleType == 'Bike')
+            $this->vehicleTypeSlots[$this->floorNumber][$vehicleType]['slots'] = array_fill($this->slotNumber, $capacity, '');
+        if($vehicleType == 'Car')
+            $this->vehicleTypeSlots[$this->floorNumber][$vehicleType]['slots'] = array_fill($this->slotNumber, $capacity, '');
+
+        $this->slotNumber += $capacity;
+    }
+
+    public function parkAVehicle(Vehicle $vehicleObj, int $availableSlotNumber){
+       $vehicleDetails = $vehicleObj->getVehicleDetails();
+       if($this->vehicleTypeSlots[$this->floorNumber][$vehicleDetails['type']]['availableSlots'] > 0){
+            //check Available Slot number
+            $slot = new ParkingSlot($this->floorNumber, $availableSlotNumber, $vehicleDetails['type'], $vehicleObj);
+            $this->vehicleTypeSlots[$this->floorNumber][$vehicleDetails['type']]['availableSlots']--;
+            $this->vehicleTypeSlots[$this->floorNumber][$vehicleDetails['type']]['occupiedSlots']++;
+            $this->vehicleTypeSlots[$this->floorNumber][$vehicleDetails['type']]['slots'][$availableSlotNumber] = $slot;
+            //print_r($this->vehicleTypeSlots);
+            return $slot;
+       }else{
+            throw new Exception($vehicleDetails['type']." type slots does not exist");
+       }
+       
+    }
+
+    public function unParkVehicle(ParkingSlot $parkingSlotDetails){
+            $this->vehicleTypeSlots[$this->floorNumber][$parkingSlotDetails['type']]['availableSlots']++;
+            $this->vehicleTypeSlots[$this->floorNumber][$parkingSlotDetails['type']]['occupiedSlots']--;
+            $this->vehicleTypeSlots[$this->floorNumber][$parkingSlotDetails['type']]['slots'][$parkingSlotDetails->getParkingLotId()] = '';
+        print_r( $this->vehicleTypeSlots);
+    }
+
+    public function getVehicleTypeSlots(){
+        return $this->vehicleTypeSlots[$this->floorNumber];
+    }
+}
+
+Class ParkingLot{
+    private $parkingLotName;
+    private $parkingLotFloorNumbers;
+    public $parkingLotFloors = [];
+
+    public function __construct($parkingLotName){
+        $this->parkingLotName = $parkingLotName;
+    }
+    
+    public function addFloor(int $floorNumber, ParkingFloorSlots $parkingFloorSlots){
+        $this->parkingLotFloors[$floorNumber] = $parkingFloorSlots;
+        return $this->parkingLotFloors[$floorNumber];
+    }
+
+    public function getAllFloorsVehicleTypeAvailableSlots($checkVehicleType = ''){
+        $vehicleTypeAvailableSlots = [];
+        foreach($this->parkingLotFloors as $floorNumber => $parkingFloorSlots){
+            foreach($parkingFloorSlots->getVehicleTypeSlots() as $vehicleType => $vehicle){
+                $vehicleTypeAvailableSlots[$floorNumber][$vehicleType] = $vehicle['availableSlots'];
+                if(!empty($checkVehicleType) && $checkVehicleType == $vehicleType && $vehicleTypeAvailableSlots[$floorNumber][$vehicleType] > 0){
+                    
+                    foreach($vehicle['slots'] as $slotNumber => $slot){
+                        if(empty($slot)){
+                            return [$floorNumber, $slotNumber] ;
+                        }
+                    }
+                }
+            }
+        }
+        return $vehicleTypeAvailableSlots;
+    }
+
+    public function isSlotAvailable(string $vehicleType){
+        list($floorSlots, $slotNumber) = $this->getAllFloorsVehicleTypeAvailableSlots($vehicleType);
+        if(!empty($floorSlots) && !empty($slotNumber)){
+            return [$floorSlots, $slotNumber];
+        }
+        return null;
+    }
+
+    public function parkAVehicle(Vehicle $vehicle){
+        $vehicleDetails = $vehicle->getVehicleDetails();
+        list($availableFloor, $availableSlot) = $this->isSlotAvailable($vehicleDetails['type']);
+        if($availableFloor !== null){
+            $parkingFloorSlots = $this->parkingLotFloors[$availableFloor];
+            $occupiedSlot = $parkingFloorSlots->parkAVehicle($vehicle, $availableSlot);
+            return $occupiedSlot;
+        }else{
+            throw new Exception($vehicleDetails['type']." type slots does not exist");
+        }
+    }
+
+    public function unParkVehicle(ParkingSlot $parkingSlotDetails){
+        $slotDeatils = $parkingSlotDetails->getSlotDetails();
+        $floorNumber = $slotDeatils['floorNumber'];
+        $slotNumber = $slotDeatils['slotNumber'];
+        $parkingFloorSlot = $this->parkingLotFloors[$floorNumber]->vehicleTypeSlots[$floorNumber]['type'];
+        $parkingFloorSlot->unParkVehicle($parkingFloorSlot);
+    }
+}
+
+
+$southParking = new ParkingLot("South Parking");
+$floorNumber = 1; $firstFloorSlots = 100;
+$southFirstFloor = $southParking->addFloor(1, new ParkingFloorSlots($floorNumber, $firstFloorSlots));
+$southFirstFloor->addParkingVehicleTypeWithCapacity('Truck', 5);
+$southFirstFloor->addParkingVehicleTypeWithCapacity('Car', 10);
+$southFirstFloor->addParkingVehicleTypeWithCapacity('Bike', 15);
+
+$southSecondFloor = $southParking->addFloor(2, new ParkingFloorSlots(2, 100));
+$southSecondFloor->addParkingVehicleTypeWithCapacity('Truck', 10);
+$southSecondFloor->addParkingVehicleTypeWithCapacity('Car', 20);
+$southSecondFloor->addParkingVehicleTypeWithCapacity('Bike', 30);
+
+//print_r($southParking->getAllFloorsVehicleTypeAvailableSlots()); die;
+
+$t1 = new Vehicle('1234', 'Truck', 'Red');
+$t1occupiedSlot = $southParking->parkAVehicle($t1);
+
+$occupiedSlot2 = $southParking->unParkVehicle($t1occupiedSlot);
+
+
+$vehicle2 = new Vehicle('1235', 'Truck', 'Black');
+$occupiedSlot2 = $southParking->parkAVehicle($vehicle2); die;
+
+// $vehicle3 = new Vehicle('1236', 'Truck', 'Blue');
+// $occupiedSlot3 = $southParking->parkAVehicle($vehicle3);
+
+
+$vehicle3 = new Vehicle('1111', 'Car', 'Blue');
+$occupiedSlot3 = $southParking->parkAVehicle($vehicle3);
+
+
+$vehicle3 = new Vehicle('1110', 'Bike', 'Blue');
+$occupiedSlot3 = $southParking->parkAVehicle($vehicle3);
 
 
 
-?>
+
+print_r($southParking->getAllFloorsVehicleTypeAvailableSlots());
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
