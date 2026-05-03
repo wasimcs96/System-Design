@@ -167,15 +167,15 @@ E — Edge cases
 D — Discuss trade-offs
 Mock interviews: interviewing.io | Hello Interview
 📦 All-in-One Resource Summary
-Resource	Type	Cost	Use For
-Refactoring Guru	Website	Free	All Design Patterns
-ByteByteGo YouTube	YouTube	Free	HLD concepts
-System Design Primer	GitHub	Free	HLD reference
-ByteByteGo Vol 1 & 2 (Books)	Book	~$30	HLD Practice
+Resource	                Type	Cost	Use For
+Refactoring Guru	        Website	Free	All Design Patterns
+ByteByteGo                  YouTube	YouTube	Free	HLD concepts
+System Design Primer.       GitHub	Free	HLD reference
+ByteByteGo Vol 1 & 2(Books) Book	~$30	HLD Practice
 Udit Agarwal LLD YouTube	YouTube	Free	LLD Machine Coding
 Grokking OOD (Educative)	Course	Paid	LLD Interview
-Grokking SD (Educative)	Course	Paid	HLD Interview
-Pramp	Mock Interview	Free	Both LLD & HLD
+Grokking SD (Educative)	    Course	Paid	HLD Interview
+Pramp	                    Mock Interview Free	Both LLD & HLD
 🗓️ Final Timeline
 Code
 Week 1-2   → OOP + SOLID
