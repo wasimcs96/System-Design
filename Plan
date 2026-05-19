@@ -3,8 +3,8 @@
 3. Data Structure & Algo
 4. Low Level System Design : OOPS -> SOLID -> Design Patterns -> Low Level Design Question Practice
 5. High Level System Design 
-6. Minor Tool/Techs : (Kafka, Elastic Search, GraphQL ..etc and DevOps). (Called as Distributed System Tools)
-7. New Techs : (NodeJs/MongoDB/PostgreSQL/Java)
+6. Minor Tool/Techs : (All Techniques like WebSockets, Auth, JWT, along with Tools like Kafka, Elastic Search, GraphQL ..etc and DevOps). (Called as Distributed System Tools)
+7. New Techs : (NodeJs/MongoDB/PostgreSQL/graphQl/Java)
 8. AI : Skills With AI which Align with Tech Lead or Senior Engineer for future proof jobs 
 9. Business : Work on IDEA (Product) 
 10.Interview Preparation (CV, LinkedIn, Behavioral Rounds)(Start after June)
@@ -14,9 +14,9 @@ Some of items that need to be cover
 
 =====================
 
-1. May - June = DSA
-2. May = OOPS->SOLID->UML->Design Patterns->LLD Practice
-3. June = HLD 
+1. May - 15 June = DSA (Till Stack & Queueß)
+2. May - 15 June = OOPS->SOLID->UML->Design Patterns->LLD Practice
+ 
 
  
 

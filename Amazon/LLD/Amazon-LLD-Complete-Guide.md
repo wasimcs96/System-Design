@@ -1064,7 +1064,7 @@ Every LLD problem at Amazon will be extended. Be ready for:
 
 ---
 
-### Recommended Resources
+### Recommended Resources 
 
 #### Books
 | Book | Why |

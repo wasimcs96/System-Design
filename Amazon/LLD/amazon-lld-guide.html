@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon LLD Interview — Complete Preparation Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #16161f;
+    --bg4: #1c1c28;
+    --accent: #ff6b35;
+    --accent2: #ff9a6c;
+    --accent3: #ffcba0;
+    --blue: #4facfe;
+    --blue2: #00f2fe;
+    --green: #43e97b;
+    --purple: #a78bfa;
+    --yellow: #fbbf24;
+    --text: #f0ede8;
+    --text2: #a8a5a0;
+    --text3: #666360;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --radius: 12px;
+    --radius-sm: 6px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    min-height: 100vh;
+  }
+
+  /* ─── NAV ─── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,15,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav-brand {
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-right: 2rem;
+    padding: 1rem 0;
+  }
+  .nav a {
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 1rem 0.75rem;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .nav a:hover { color: var(--text); border-bottom-color: var(--accent); }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding: 80px 2rem 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, rgba(255,107,53,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,107,53,0.12);
+    border: 1px solid rgba(255,107,53,0.3);
+    color: var(--accent2);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+  .hero-badge::before { content: '⬡'; font-size: 10px; }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    font-family: 'Instrument Serif', serif;
+    color: var(--accent);
+  }
+  .hero p {
+    font-size: 16px;
+    color: var(--text2);
+    max-width: 600px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+  }
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--text3);
+    font-weight: 500;
+  }
+  .hero-meta-item .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+  /* ─── TOC ─── */
+  .toc-section {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    padding: 0 2rem;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .toc-item {
+    background: var(--bg2);
+    padding: 20px 20px;
+    text-decoration: none;
+    color: var(--text2);
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .toc-item:hover { background: var(--bg3); color: var(--text); }
+  .toc-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .toc-title { font-size: 13px; font-weight: 600; line-height: 1.35; }
+
+  /* ─── LAYOUT ─── */
+  .wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem 80px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  @media (max-width: 760px) {
+    .wrapper { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+  }
+
+  /* ─── SIDEBAR ─── */
+  .sidebar {
+    position: sticky;
+    top: 57px;
+    padding: 1.5rem 0;
+  }
+  .sidebar-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 12px;
+  }
+  .sidebar-link {
+    display: block;
+    padding: 6px 12px;
+    border-left: 2px solid transparent;
+    font-size: 12px;
+    color: var(--text3);
+    text-decoration: none;
+    border-radius: 0 4px 4px 0;
+    transition: color 0.15s, border-color 0.15s;
+    line-height: 1.4;
+  }
+  .sidebar-link:hover { color: var(--text); border-left-color: var(--accent); }
+  .sidebar-link.sub {
+    padding-left: 24px;
+    font-size: 11px;
+  }
+
+  /* ─── CONTENT ─── */
+  .content { min-width: 0; }
+
+  /* ─── SECTION ─── */
+  .section { margin-bottom: 64px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .section-number {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    text-transform: uppercase;
+    background: rgba(255,107,53,0.1);
+    border: 1px solid rgba(255,107,53,0.2);
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  /* ─── SUBSECTION ─── */
+  .subsection { margin-bottom: 40px; }
+  .subsection-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .subsection-title::before {
+    content: '';
+    width: 3px; height: 16px;
+    background: var(--accent);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ─── PROSE ─── */
+  p { color: var(--text2); margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ─── TABLES ─── */
+  .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: var(--radius); border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead tr { background: var(--bg3); }
+  thead th {
+    padding: 11px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text3);
+    white-space: nowrap;
+    border-bottom: 1px solid var(--border2);
+  }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--bg3); }
+  tbody td { padding: 11px 14px; color: var(--text2); vertical-align: top; }
+  tbody td:first-child { font-weight: 600; color: var(--text); }
+  strong { color: var(--text); font-weight: 600; }
+
+  /* ─── CODE ─── */
+  pre {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    overflow-x: auto;
+    margin: 16px 0;
+    position: relative;
+  }
+  pre::before {
+    content: attr(data-lang);
+    position: absolute;
+    top: 10px; right: 14px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+  }
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: #d4d0c8;
+  }
+  .k { color: #cc99cd; }
+  .t { color: var(--blue); }
+  .s { color: var(--green); }
+  .c { color: #7c7c7c; font-style: italic; }
+  .n { color: var(--accent2); }
+  .m { color: var(--yellow); }
+  p > code, li > code {
+    background: var(--bg3);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--accent2);
+    border: 1px solid var(--border);
+  }
+
+  /* ─── CARDS ─── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .card:hover { border-color: var(--border2); background: var(--bg3); }
+  .card-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .card-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .card-body { font-size: 12px; color: var(--text2); line-height: 1.55; }
+
+  /* ─── PRINCIPLE CARDS ─── */
+  .principle-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .principle-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .principle-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+  }
+  .principle-letter {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: rgba(255,107,53,0.15);
+    border: 1px solid rgba(255,107,53,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 800;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .principle-name { font-weight: 700; font-size: 14px; }
+  .principle-check { font-size: 12px; color: var(--text3); margin-left: auto; font-style: italic; }
+  .principle-body { padding: 16px 18px; }
+
+  /* ─── PATTERN CARD ─── */
+  .pattern-section { margin-bottom: 32px; }
+  .pattern-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .pattern-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .badge-creational { background: rgba(67,233,123,0.12); color: var(--green); border: 1px solid rgba(67,233,123,0.2); }
+  .badge-structural  { background: rgba(79,172,254,0.12); color: var(--blue);  border: 1px solid rgba(79,172,254,0.2); }
+  .badge-behavioral  { background: rgba(167,139,250,0.12); color: var(--purple); border: 1px solid rgba(167,139,250,0.2); }
+  .pattern-title { font-size: 16px; font-weight: 700; }
+  .when-to-use {
+    background: rgba(251,191,36,0.06);
+    border: 1px solid rgba(251,191,36,0.15);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #e8c572;
+    margin-bottom: 12px;
+  }
+  .when-to-use strong { color: var(--yellow); }
+
+  /* ─── CHECKLIST ─── */
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text2);
+    padding: 10px 14px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+  .checklist li::before {
+    content: '○';
+    color: var(--text3);
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 14px;
+  }
+  .checklist.done li::before { content: '●'; color: var(--green); }
+
+  /* ─── WARNING / INFO BOXES ─── */
+  .callout {
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    margin: 14px 0;
+    font-size: 13px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .callout-icon { flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+  .callout.warn  { background: rgba(251,191,36,0.07); border: 1px solid rgba(251,191,36,0.18); color: #e8c572; }
+  .callout.info  { background: rgba(79,172,254,0.07); border: 1px solid rgba(79,172,254,0.18); color: #8cc9f0; }
+  .callout.danger{ background: rgba(248,113,113,0.07); border: 1px solid rgba(248,113,113,0.18); color: #f4a0a0; }
+
+  /* ─── STEP FLOW ─── */
+  .steps { display: flex; flex-direction: column; gap: 0; margin: 16px 0; }
+  .step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-left: 1px solid var(--border);
+    padding-left: 20px;
+    position: relative;
+  }
+  .step::before {
+    content: '';
+    position: absolute;
+    left: -5px; top: 20px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .step:last-child { border-left-color: transparent; }
+  .step-num {
+    min-width: 28px; height: 28px;
+    background: rgba(255,107,53,0.12);
+    border: 1px solid rgba(255,107,53,0.25);
+    border-radius: 6px;
+    font-size: 11px; font-weight: 800;
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-content { flex: 1; }
+  .step-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .step-desc { font-size: 12px; color: var(--text2); line-height: 1.5; }
+
+  /* ─── TIME BREAKDOWN ─── */
+  .time-bar { margin: 16px 0; }
+  .time-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+  .time-label { width: 90px; color: var(--text3); text-align: right; flex-shrink: 0; }
+  .time-track {
+    flex: 1;
+    height: 6px;
+    background: var(--bg3);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .time-fill { height: 100%; border-radius: 3px; }
+  .time-desc { color: var(--text2); min-width: 180px; }
+
+  /* ─── LP TABLE ─── */
+  .lp-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .lp-row {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 13px 16px;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+  .lp-label { font-size: 12px; font-weight: 700; color: var(--accent2); }
+  .lp-desc { font-size: 12px; color: var(--text2); }
+
+  /* ─── MISTAKES TABLE ─── */
+  .mistake-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .mistake-row {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid rgba(248,113,113,0.5);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 12px 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    font-size: 12.5px;
+  }
+  .mistake-col-bad { color: #f4a0a0; }
+  .mistake-col-fix { color: #86e0a0; }
+  .mistake-col-bad::before { content: '✕  '; font-size: 11px; }
+  .mistake-col-fix::before { content: '✓  '; font-size: 11px; }
+
+  /* ─── RESOURCE GRID ─── */
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .resource-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .resource-card:hover { border-color: var(--border2); }
+  .resource-type { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; }
+  .resource-name { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .resource-why { font-size: 11px; color: var(--text2); line-height: 1.45; }
+
+  /* ─── CHEAT SHEET ─── */
+  .cheatsheet {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin: 16px 0;
+  }
+  .cheatsheet h4 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+    margin-top: 16px;
+  }
+  .cheatsheet h4:first-child { margin-top: 0; }
+  .cheatsheet p { font-size: 12.5px; color: var(--text2); margin-bottom: 4px; }
+  .cheatsheet .trigger { color: var(--blue); font-weight: 600; }
+  .cheatsheet .solution { color: var(--accent2); }
+
+  /* ─── ROADMAP WEEKS ─── */
+  .roadmap { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 16px 0; }
+  .roadmap-week {
+    padding: 18px;
+    background: var(--bg2);
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .roadmap-week:last-child { border-right: none; }
+  .roadmap-wk { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .roadmap-focus { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+  .roadmap-detail { font-size: 11px; color: var(--text2); line-height: 1.5; }
+
+  /* ─── CONCURRENCY TABLE ─── */
+  .concept-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin: 16px 0; }
+  .concept-row {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 12px;
+    align-items: start;
+    font-size: 13px;
+  }
+  .concept-term { font-weight: 700; color: var(--purple); }
+  .concept-def { color: var(--text2); }
+
+  /* ─── DIVIDER ─── */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 2rem;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text3);
+  }
+  footer a { color: var(--accent2); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">Amazon LLD</div>
+  <a href="#section-1">Expectations</a>
+  <a href="#section-2">Roadmap</a>
+  <a href="#patterns">Patterns</a>
+  <a href="#concurrency">Concurrency</a>
+  <a href="#section-3">Amazon Strategy</a>
+  <a href="#section-6">Final Prep</a>
+  <a href="#cheatsheet">Cheat Sheet</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">Complete Preparation Guide</div>
+  <h1>Amazon <em>LLD Interview</em><br>Prep Guide</h1>
+  <p>Authored from the perspective of a Senior SDE-3 / Staff Engineer at Amazon with 10+ years of interviewing experience. Targeting SDE-2, SDE-3, and Senior Software Engineer roles — India &amp; Malaysia hiring bars.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><span class="dot"></span>8–10 weeks for SDE-2</div>
+    <div class="hero-meta-item"><span class="dot"></span>6–8 weeks for SDE-3</div>
+    <div class="hero-meta-item"><span class="dot"></span>Java / Python examples</div>
+    <div class="hero-meta-item"><span class="dot"></span>Bar Raiser ready</div>
+  </div>
+</header>
+
+<!-- TOC -->
+<section class="toc-section">
+  <div class="toc-grid">
+    <a href="#section-1" class="toc-item"><span class="toc-num">01</span><span class="toc-title">LLD Interview Expectations at Amazon</span></a>
+    <a href="#section-2" class="toc-item"><span class="toc-num">02</span><span class="toc-title">Complete Preparation Roadmap (6–10 Weeks)</span></a>
+    <a href="#section-3" class="toc-item"><span class="toc-num">03</span><span class="toc-title">Amazon-Specific Strategy</span></a>
+    <a href="#section-6" class="toc-item"><span class="toc-num">04</span><span class="toc-title">Final Preparation Strategy</span></a>
+  </div>
+</section>
+
+<!-- MAIN LAYOUT -->
+<div class="wrapper">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-label">Navigation</div>
+  <a href="#section-1" class="sidebar-link">LLD Expectations</a>
+  <a href="#oop-principles" class="sidebar-link sub">OOP Principles (SOLID)</a>
+  <a href="#design-patterns-used" class="sidebar-link sub">Design Patterns</a>
+  <a href="#code-quality" class="sidebar-link sub">Code Quality</a>
+  <a href="#concurrency-intro" class="sidebar-link sub">Concurrency</a>
+  <a href="#lld-vs-hld" class="sidebar-link sub">LLD vs HLD</a>
+  <a href="#eval-criteria" class="sidebar-link sub">Evaluation Criteria</a>
+  <a href="#section-2" class="sidebar-link">Preparation Roadmap</a>
+  <a href="#phase1" class="sidebar-link sub">Phase 1: Fundamentals</a>
+  <a href="#patterns" class="sidebar-link sub">Phase 2: Design Patterns</a>
+  <a href="#building-blocks" class="sidebar-link sub">Phase 3: Building Blocks</a>
+  <a href="#concurrency" class="sidebar-link sub">Phase 4: Concurrency</a>
+  <a href="#problem-solving" class="sidebar-link sub">Phase 5: Problem Solving</a>
+  <a href="#section-3" class="sidebar-link">Amazon Strategy</a>
+  <a href="#lp-section" class="sidebar-link sub">Leadership Principles</a>
+  <a href="#extensions" class="sidebar-link sub">Extension Problems</a>
+  <a href="#common-traps" class="sidebar-link sub">Common Traps</a>
+  <a href="#section-6" class="sidebar-link">Final Prep</a>
+  <a href="#cheatsheet" class="sidebar-link sub">Cheat Sheet</a>
+  <a href="#resources" class="sidebar-link sub">Resources</a>
+</aside>
+
+<!-- CONTENT -->
+<main class="content">
+
+<!-- ══════════════════════════════════════ SECTION 1 ══════════════════════════════════════ -->
+<section id="section-1" class="section">
+  <div class="section-header">
+    <span class="section-number">Section 01</span>
+    <h2 class="section-title">LLD Interview Expectations at Amazon</h2>
+  </div>
+
+  <p>Amazon LLD interviews are <strong>NOT about producing perfect code</strong>. They evaluate your engineering thought process, ability to model real-world complexity, and how you communicate design decisions. Here is what every interviewer scores:</p>
+
+  <!-- SOLID -->
+  <div id="oop-principles" class="subsection">
+    <h3 class="subsection-title">1.1 OOP Principles (SOLID)</h3>
+    <p>Amazon interviewers want to see that you instinctively apply OOP — not just know the definitions.</p>
+    <div class="principle-grid">
+      <div class="principle-card">
+        <div class="principle-header">
+          <div class="principle-letter">S</div>
+          <div class="principle-name">Single Responsibility</div>
+          <div class="principle-check">Does each class do exactly ONE thing?</div>
+        </div>
+        <div class="principle-body">
+          <p>Every class should have one, and only one, reason to change. If a class handles both business logic and email notifications, it has two responsibilities.</p>
+          <pre data-lang="java"><code><span class="c">// BAD: One class does everything</span>
+<span class="k">class</span> <span class="t">OrderService</span> {
+    <span class="k">public void</span> createOrder()  { }
+    <span class="k">public void</span> sendEmail()    { } <span class="c">// Wrong</span>
+    <span class="k">public void</span> generatePDF()  { } <span class="c">// Wrong</span>
+}
+
+<span class="c">// GOOD: Separate responsibilities</span>
+<span class="k">class</span> <span class="t">OrderService</span>       { <span class="k">public void</span> createOrder() { } }
+<span class="k">class</span> <span class="t">NotificationService</span> { <span class="k">public void</span> sendOrderEmail(<span class="t">Order</span> o) { } }
+<span class="k">class</span> <span class="t">InvoiceService</span>      { <span class="k">public void</span> generateInvoice(<span class="t">Order</span> o) { } }</code></pre>
+        </div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-header">
+          <div class="principle-letter">O</div>
+          <div class="principle-name">Open / Closed</div>
+          <div class="principle-check">Can you extend behavior without modifying existing code?</div>
+        </div>
+        <div class="principle-body">
+          <pre data-lang="java"><code><span class="c">// BAD: Must modify class to add new discount type</span>
+<span class="k">class</span> <span class="t">DiscountCalculator</span> {
+    <span class="k">public double</span> calculate(<span class="t">String</span> type, <span class="k">double</span> price) {
+        <span class="k">if</span> (type.equals(<span class="s">"SEASONAL"</span>)) <span class="k">return</span> price * <span class="m">0.1</span>;
+        <span class="k">if</span> (type.equals(<span class="s">"PRIME"</span>))    <span class="k">return</span> price * <span class="m">0.2</span>;
+    }
+}
+
+<span class="c">// GOOD: Extend without modifying</span>
+<span class="k">interface</span> <span class="t">DiscountStrategy</span> {
+    <span class="k">double</span> calculate(<span class="k">double</span> price);
+}
+<span class="k">class</span> <span class="t">SeasonalDiscount</span> <span class="k">implements</span> <span class="t">DiscountStrategy</span> { ... }
+<span class="k">class</span> <span class="t">PrimeDiscount</span>    <span class="k">implements</span> <span class="t">DiscountStrategy</span> { ... }</code></pre>
+        </div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-header">
+          <div class="principle-letter">L</div>
+          <div class="principle-name">Liskov Substitution</div>
+          <div class="principle-check">Are subclasses safely substitutable for their parent?</div>
+        </div>
+        <div class="principle-body">
+          <pre data-lang="java"><code><span class="c">// BAD: Square extends Rectangle but breaks invariant</span>
+<span class="k">class</span> <span class="t">Rectangle</span> {
+    <span class="k">void</span> setWidth(<span class="k">int</span> w)  { <span class="k">this</span>.width = w; }
+    <span class="k">void</span> setHeight(<span class="k">int</span> h) { <span class="k">this</span>.height = h; }
+}
+<span class="k">class</span> <span class="t">Square</span> <span class="k">extends</span> <span class="t">Rectangle</span> {
+    <span class="k">void</span> setWidth(<span class="k">int</span> w) {
+        <span class="k">this</span>.width = w; <span class="k">this</span>.height = w; <span class="c">// Breaks LSP!</span>
+    }
+}
+
+<span class="c">// GOOD: Separate classes with a common Shape interface</span>
+<span class="k">interface</span> <span class="t">Shape</span> { <span class="k">double</span> area(); }
+<span class="k">class</span> <span class="t">Rectangle</span> <span class="k">implements</span> <span class="t">Shape</span> { ... }
+<span class="k">class</span> <span class="t">Square</span>    <span class="k">implements</span> <span class="t">Shape</span> { ... }</code></pre>
+        </div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-header">
+          <div class="principle-letter">I</div>
+          <div class="principle-name">Interface Segregation</div>
+          <div class="principle-check">Are interfaces thin and role-specific (not fat)?</div>
+        </div>
+        <div class="principle-body">
+          <pre data-lang="java"><code><span class="c">// BAD: Fat interface — Robots don't eat!</span>
+<span class="k">interface</span> <span class="t">Worker</span> {
+    <span class="k">void</span> work();
+    <span class="k">void</span> eat();
+    <span class="k">void</span> sleep();
+}
+
+<span class="c">// GOOD: Segregated interfaces</span>
+<span class="k">interface</span> <span class="t">Workable</span> { <span class="k">void</span> work(); }
+<span class="k">interface</span> <span class="t">Eatable</span>  { <span class="k">void</span> eat(); }
+<span class="k">class</span> <span class="t">HumanWorker</span> <span class="k">implements</span> <span class="t">Workable</span>, <span class="t">Eatable</span> { ... }
+<span class="k">class</span> <span class="t">RobotWorker</span> <span class="k">implements</span> <span class="t">Workable</span> { ... }</code></pre>
+        </div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-header">
+          <div class="principle-letter">D</div>
+          <div class="principle-name">Dependency Inversion</div>
+          <div class="principle-check">Are high-level modules depending on abstractions?</div>
+        </div>
+        <div class="principle-body">
+          <pre data-lang="java"><code><span class="c">// BAD: High-level depends on low-level concrete class</span>
+<span class="k">class</span> <span class="t">OrderService</span> {
+    <span class="k">private</span> <span class="t">MySQLOrderRepository</span> repo = <span class="k">new</span> <span class="t">MySQLOrderRepository</span>();
+}
+
+<span class="c">// GOOD: Depend on abstraction, injected via constructor</span>
+<span class="k">class</span> <span class="t">OrderService</span> {
+    <span class="k">private final</span> <span class="t">OrderRepository</span> repo; <span class="c">// Interface</span>
+    
+    <span class="k">public</span> <span class="t">OrderService</span>(<span class="t">OrderRepository</span> repo) {
+        <span class="k">this</span>.repo = repo;
+    }
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design Patterns Used -->
+  <div id="design-patterns-used" class="subsection">
+    <h3 class="subsection-title">1.2 Design Patterns Usage</h3>
+    <p>Interviewers are <strong>NOT</strong> looking for pattern name-dropping. They want to see you identify when a pattern applies, implement it cleanly, and explain why you chose it over alternatives.</p>
+    <p>Most commonly tested at Amazon:</p>
+    <div class="card-grid">
+      <div class="card"><div class="card-label">Behavioral</div><div class="card-title">Strategy</div><div class="card-body">Replaces conditionals; interchangeable algorithms</div></div>
+      <div class="card"><div class="card-label">Behavioral</div><div class="card-title">Observer</div><div class="card-body">Event systems; one-to-many dependency</div></div>
+      <div class="card"><div class="card-label">Creational</div><div class="card-title">Factory / Abstract Factory</div><div class="card-body">Object creation at runtime</div></div>
+      <div class="card"><div class="card-label">Creational</div><div class="card-title">Singleton</div><div class="card-body">Thread-safe single resource</div></div>
+      <div class="card"><div class="card-label">Creational</div><div class="card-title">Builder</div><div class="card-body">Complex object construction</div></div>
+      <div class="card"><div class="card-label">Structural</div><div class="card-title">Decorator</div><div class="card-body">Feature layering at runtime</div></div>
+      <div class="card"><div class="card-label">Behavioral</div><div class="card-title">Command</div><div class="card-body">Request encapsulation, undo/redo</div></div>
+    </div>
+  </div>
+
+  <!-- Code Quality -->
+  <div id="code-quality" class="subsection">
+    <h3 class="subsection-title">1.3 Code Quality and Readability</h3>
+    <div class="card-grid">
+      <div class="card"><div class="card-title">Meaningful Names</div><div class="card-body">Descriptive class, method, and variable names that convey intent</div></div>
+      <div class="card"><div class="card-title">Short Methods</div><div class="card-body">Methods under 20 lines ideally; single purpose per method</div></div>
+      <div class="card"><div class="card-title">No Magic Numbers</div><div class="card-body">Use constants and enums instead of bare literals</div></div>
+      <div class="card"><div class="card-title">Avoid Deep Nesting</div><div class="card-body">Use early returns and guard clauses to flatten conditionals</div></div>
+    </div>
+    <div class="callout warn"><div class="callout-icon">⚑</div><div><strong>Interviewer tip:</strong> They will read your code left-to-right. If they have to re-read a line, you've already lost points.</div></div>
+  </div>
+
+  <!-- Concurrency -->
+  <div id="concurrency-intro" class="subsection">
+    <h3 class="subsection-title">1.4 Concurrency Handling (CRITICAL for SDE-2/SDE-3)</h3>
+    <p>Amazon systems are massively concurrent. Interviewers frequently add: <em>"Now imagine 1000 threads accessing this simultaneously. How does your design change?"</em></p>
+    <p>You must be fluent in:</p>
+    <ul class="checklist">
+      <li>Identifying shared mutable state</li>
+      <li>Using locks (<code>synchronized</code>, <code>ReentrantLock</code>, <code>ReadWriteLock</code>)</li>
+      <li>Using atomic operations (<code>AtomicInteger</code>, <code>ConcurrentHashMap</code>)</li>
+      <li>Avoiding deadlocks (lock ordering, <code>tryLock</code> with timeout)</li>
+      <li>Designing lock-free structures where possible</li>
+    </ul>
+  </div>
+
+  <!-- LLD vs HLD -->
+  <div id="lld-vs-hld" class="subsection">
+    <h3 class="subsection-title">1.5 LLD vs HLD — Key Differences</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dimension</th><th>HLD (High-Level Design)</th><th>LLD (Low-Level Design)</th></tr></thead>
+        <tbody>
+          <tr><td>Focus</td><td>System architecture</td><td>Class/component design</td></tr>
+          <tr><td>Output</td><td>Architecture diagram, service map</td><td>Class diagram, code skeleton</td></tr>
+          <tr><td>Tools</td><td>Load balancers, databases, queues</td><td>Classes, interfaces, methods</td></tr>
+          <tr><td>Concurrency</td><td>"Use Kafka for async"</td><td>Thread-safe queue implementation</td></tr>
+          <tr><td>Duration</td><td>45 min</td><td>45–60 min</td></tr>
+          <tr><td>Languages</td><td>Technology-agnostic</td><td>Language-specific</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout info">
+      <div class="callout-icon">ℹ</div>
+      <div>
+        <strong>HLD Example:</strong> "We'll have an Order Service backed by a MySQL DB with a Redis cache."<br><br>
+        <strong>LLD Example:</strong> "The <code>Order</code> class contains <code>OrderItem[]</code>, uses a Builder for construction, and <code>OrderProcessor</code> interface is implemented by <code>CODOrderProcessor</code> and <code>OnlineOrderProcessor</code>."
+      </div>
+    </div>
+  </div>
+
+  <!-- Evaluation -->
+  <div id="eval-criteria" class="subsection">
+    <h3 class="subsection-title">1.6 Evaluation Criteria — Including Bar Raiser</h3>
+    <p>Amazon uses a structured scorecard. The Bar Raiser checks that a candidate must be <strong>better than 50%</strong> of people at the same level currently at Amazon.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dimension</th><th>Weight</th><th>What Bar Raiser Checks</th></tr></thead>
+        <tbody>
+          <tr><td>Problem Understanding</td><td>High</td><td>Did you ask the right clarifying questions?</td></tr>
+          <tr><td>Design Quality</td><td>Very High</td><td>SOLID, patterns, extensibility</td></tr>
+          <tr><td>Code Quality</td><td>High</td><td>Clean, readable, idiomatic code</td></tr>
+          <tr><td>Concurrency Awareness</td><td>High (SDE-3)</td><td>Proactively address thread safety</td></tr>
+          <tr><td>Communication</td><td>Very High</td><td>Do you narrate decisions clearly?</td></tr>
+          <tr><td>Tradeoff Discussion</td><td>High</td><td>Do you acknowledge alternatives?</td></tr>
+          <tr><td>Handling Extensions</td><td>High</td><td>How well does your design adapt?</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ SECTION 2 ══════════════════════════════════════ -->
+<section id="section-2" class="section">
+  <div class="section-header">
+    <span class="section-number">Section 02</span>
+    <h2 class="section-title">Complete Preparation Roadmap</h2>
+  </div>
+
+  <div class="roadmap">
+    <div class="roadmap-week">
+      <div class="roadmap-wk">Week 1–2</div>
+      <div class="roadmap-focus">Fundamentals</div>
+      <div class="roadmap-detail">OOP, SOLID principles, UML basics</div>
+    </div>
+    <div class="roadmap-week">
+      <div class="roadmap-wk">Week 3–4</div>
+      <div class="roadmap-focus">Design Patterns</div>
+      <div class="roadmap-detail">Creational, Structural, Behavioral patterns</div>
+    </div>
+    <div class="roadmap-week">
+      <div class="roadmap-wk">Week 4–5</div>
+      <div class="roadmap-focus">Building Blocks</div>
+      <div class="roadmap-detail">DI, Error Handling, State Machines</div>
+    </div>
+    <div class="roadmap-week">
+      <div class="roadmap-wk">Week 5–6</div>
+      <div class="roadmap-focus">Concurrency</div>
+      <div class="roadmap-detail">Locks, Atomics, Producer-Consumer</div>
+    </div>
+    <div class="roadmap-week">
+      <div class="roadmap-wk">Week 6–8</div>
+      <div class="roadmap-focus">Problem Solving</div>
+      <div class="roadmap-detail">20 LLD problems end-to-end</div>
+    </div>
+    <div class="roadmap-week">
+      <div class="roadmap-wk">Week 8–10</div>
+      <div class="roadmap-focus">Mock Interviews</div>
+      <div class="roadmap-detail">3+ full mocks, record & review</div>
+    </div>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div id="phase1" class="subsection">
+    <h3 class="subsection-title">Phase 1: Fundamentals (Week 1–2)</h3>
+
+    <h4 style="font-size:13px;font-weight:700;margin:20px 0 12px;color:var(--text2);">OOP Core Concepts</h4>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Encapsulation</div>
+        <div class="card-title">Hide Internal State</div>
+        <div class="card-body">Expose behavior via methods, not direct field access. <code>BankAccount</code> exposes <code>deposit()</code> / <code>withdraw()</code>, not <code>balance</code> directly.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Inheritance</div>
+        <div class="card-title">Model "is-a" Relationships</div>
+        <div class="card-body">Share behavior. Prefer <strong>composition over inheritance</strong> when the relationship is "has-a". <code>Animal → Dog, Cat</code> is good; <code>User → AdminUser</code> is bad.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Polymorphism</div>
+        <div class="card-title">Same Interface, Different Behavior</div>
+        <div class="card-body">Runtime (method overriding) vs Compile-time (overloading). <code>PaymentProcessor</code> interface implemented by <code>CreditCardProcessor</code> and <code>UPIProcessor</code>.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Abstraction</div>
+        <div class="card-title">Expose WHAT, Hide HOW</div>
+        <div class="card-body">Use abstract classes when there is shared state; use interfaces when defining contracts. Program to the interface, not the implementation.</div>
+      </div>
+    </div>
+
+    <h4 style="font-size:13px;font-weight:700;margin:20px 0 12px;color:var(--text2);">UML Class Diagram Relationships</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Relationship</th><th>Symbol</th><th>Meaning</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>Association</td><td>—</td><td>A uses B</td><td>Order uses Customer</td></tr>
+          <tr><td>Aggregation</td><td>◇—</td><td>A has B (B can exist without A)</td><td>Department has Employee</td></tr>
+          <tr><td>Composition</td><td>◆—</td><td>A owns B (B cannot exist without A)</td><td>Order owns OrderItem</td></tr>
+          <tr><td>Inheritance</td><td>△—</td><td>A is B</td><td>Dog is Animal</td></tr>
+          <tr><td>Realization</td><td>..△</td><td>A implements B</td><td>CreditCard implements Payment</td></tr>
+          <tr><td>Dependency</td><td>..&gt;</td><td>A depends on B temporarily</td><td>OrderService uses EmailSender</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PHASE 2: PATTERNS -->
+  <div id="patterns" class="subsection">
+    <h3 class="subsection-title">Phase 2: Core Design Patterns (Week 3–4)</h3>
+
+    <!-- CREATIONAL -->
+    <h4 style="font-size:13px;font-weight:700;margin:20px 0 12px;color:var(--text2);">Creational Patterns</h4>
+
+    <div class="pattern-section">
+      <div class="pattern-header">
+        <span class="pattern-badge badge-creational">Creational</span>
+        <span class="pattern-title">Factory Method</span>
+      </div>
+      <div class="when-to-use"><strong>When to use:</strong> When object creation logic is complex or should be decided at runtime. Amazon use cases: notification system, payment processor factory, logger factory.</div>
+      <pre data-lang="java"><code><span class="k">interface</span> <span class="t">Notification</span> {
+    <span class="k">void</span> send(<span class="t">String</span> message);
+}
+<span class="k">class</span> <span class="t">EmailNotification</span> <span class="k">implements</span> <span class="t">Notification</span> {
+    <span class="k">public void</span> send(<span class="t">String</span> msg) { System.out.println(<span class="s">"Email: "</span> + msg); }
+}
+<span class="k">class</span> <span class="t">SMSNotification</span> <span class="k">implements</span> <span class="t">Notification</span> {
+    <span class="k">public void</span> send(<span class="t">String</span> msg) { System.out.println(<span class="s">"SMS: "</span> + msg); }
+}
+<span class="k">class</span> <span class="t">NotificationFactory</span> {
+    <span class="k">public static</span> <span class="t">Notification</span> create(<span class="t">String</span> type) {
+        <span class="k">return switch</span> (type) {
+            <span class="k">case</span> <span class="s">"EMAIL"</span> -> <span class="k">new</span> <span class="t">EmailNotification</span>();
+            <span class="k">case</span> <span class="s">"SMS"</span>   -> <span class="k">new</span> <span class="t">SMSNotification</span>();
+            <span class="k">default</span>      -> <span class="k">throw new</span> <span class="t">IllegalArgumentException</span>(<span class="s">"Unknown: "</span> + type);
+        };
+    }
+}</code></pre>
+    </div>
+
+    <div class="pattern-section">
+      <div class="pattern-header">
+        <span class="pattern-badge badge-creational">Creational</span>
+        <span class="pattern-title">Singleton (Thread-Safe)</span>
+      </div>
+      <div class="when-to-use"><strong>When to use:</strong> Exactly one instance required system-wide (config, logger, connection pool).</div>
+      <div class="callout danger"><div class="callout-icon">⚠</div><div><strong>Interview trap:</strong> Always use double-checked locking + <code>volatile</code>. Non-volatile singleton breaks in multi-core CPUs due to instruction reordering.</div></div>
+      <pre data-lang="java"><code><span class="k">public class</span> <span class="t">ConfigManager</span> {
+    <span class="k">private static volatile</span> <span class="t">ConfigManager</span> instance; <span class="c">// volatile for visibility</span>
+    <span class="k">private final</span> <span class="t">Map</span>&lt;<span class="t">String</span>, <span class="t">String</span>&gt; configs;
+
+    <span class="k">private</span> <span class="t">ConfigManager</span>() {
+        configs = <span class="k">new</span> <span class="t">HashMap</span>&lt;&gt;();
+    }
+
+    <span class="k">public static</span> <span class="t">ConfigManager</span> getInstance() {
+        <span class="k">if</span> (instance == <span class="k">null</span>) {                       <span class="c">// First check (no lock)</span>
+            <span class="k">synchronized</span> (<span class="t">ConfigManager</span>.<span class="k">class</span>) {
+                <span class="k">if</span> (instance == <span class="k">null</span>) {               <span class="c">// Second check (with lock)</span>
+                    instance = <span class="k">new</span> <span class="t">ConfigManager</span>();
+                }
+            }
+        }
+        <span class="k">return</span> instance;
+    }
+}</code></pre>
+    </div>
+
+    <div class="pattern-section">
+      <div class="pattern-header">
+        <span class="pattern-badge badge-creational">Creational</span>
+        <span class="pattern-title">Builder</span>
+      </div>
+      <div class="when-to-use"><strong>When to use:</strong> Object has many optional fields; prevents telescoping constructors.</div>
+      <pre data-lang="java"><code><span class="k">public class</span> <span class="t">Order</span> {
+    <span class="k">private final</span> <span class="t">String</span> orderId;
+    <span class="k">private final</span> <span class="t">String</span> customerId;
+    <span class="k">private final</span> <span class="t">List</span>&lt;<span class="t">OrderItem</span>&gt; items;
+    <span class="k">private final</span> <span class="t">String</span> couponCode;       <span class="c">// optional</span>
+    <span class="k">private final</span> <span class="t">Address</span> deliveryAddress;
+
+    <span class="k">private</span> <span class="t">Order</span>(<span class="t">Builder</span> builder) {
+        <span class="k">this</span>.orderId = builder.orderId;
+        <span class="k">this</span>.customerId = builder.customerId;
+        <span class="k">this</span>.items = builder.items;
+        <span class="k">this</span>.couponCode = builder.couponCode;
+        <span class="k">this</span>.deliveryAddress = builder.deliveryAddress;
+    }
+
+    <span class="k">public static class</span> <span class="t">Builder</span> {
+        <span class="k">private</span> <span class="t">String</span> orderId;
+        <span class="k">private</span> <span class="t">String</span> customerId;
+        <span class="k">private</span> <span class="t">List</span>&lt;<span class="t">OrderItem</span>&gt; items = <span class="k">new</span> <span class="t">ArrayList</span>&lt;&gt;();
+        <span class="k">private</span> <span class="t">String</span> couponCode;
+        <span class="k">private</span> <span class="t">Address</span> deliveryAddress;
+
+        <span class="k">public</span> <span class="t">Builder</span> orderId(<span class="t">String</span> id)         { <span class="k">this</span>.orderId = id; <span class="k">return this</span>; }
+        <span class="k">public</span> <span class="t">Builder</span> customerId(<span class="t">String</span> id)       { <span class="k">this</span>.customerId = id; <span class="k">return this</span>; }
+        <span class="k">public</span> <span class="t">Builder</span> addItem(<span class="t">OrderItem</span> item)     { <span class="k">this</span>.items.add(item); <span class="k">return this</span>; }
+        <span class="k">public</span> <span class="t">Builder</span> couponCode(<span class="t">String</span> code)     { <span class="k">this</span>.couponCode = code; <span class="k">return this</span>; }
+        <span class="k">public</span> <span class="t">Builder</span> deliveryAddress(<span class="t">Address</span> a)  { <span class="k">this</span>.deliveryAddress = a; <span class="k">return this</span>; }
+
+        <span class="k">public</span> <span class="t">Order</span> build() {
+            Objects.requireNonNull(orderId, <span class="s">"orderId required"</span>);
+            Objects.requireNonNull(customerId, <span class="s">"customerId required"</span>);
+            <span class="k">return new</span> <span class="t">Order</span>(<span class="k">this</span>);
+        }
+    }
+}
+
+<span class="c">// Usage:</span>
+<span class="t">Order</span> order = <span class="k">new</span> <span class="t">Order</span>.<span class="t">Builder</span>()
+    .orderId(<span class="s">"ORD-001"</span>)
+    .customerId(<span class="s">"CUST-42"</span>)
+    .addItem(item1)
+    .couponCode(<span class="s">"SAVE10"</span>)
+    .build();</code></pre>
+    </div>
+
+    <!-- STRUCTURAL -->
+    <h4 style="font-size:13px;font-weight:700;margin:24px 0 12px;color:var(--text2);">Structural Patterns</h4>
+
+    <div class="pattern-section">
+      <div class="pattern-header">
+        <span class="pattern-badge badge-structural">Structural</span>
+        <span class="pattern-title">Adapter</span>
+      </div>
+      <div class="when-to-use"><strong>When to use:</strong> Integrate a legacy/third-party interface into your system's expected interface.</div>
+      <pre data-lang="java"><code><span class="c">// Your system's interface</span>
+<span class="k">interface</span> <span class="t">PaymentGateway</span> {
+    <span class="t">PaymentResult</span> processPayment(<span class="k">double</span> amount, <span class="t">String</span> currency);
+}
+
+<span class="c">// Third-party Stripe SDK (you can't change it)</span>
+<span class="k">class</span> <span class="t">StripeClient</span> {
+    <span class="k">public</span> <span class="t">StripeResponse</span> charge(<span class="t">StripeRequest</span> req) { ... }
+}
+
+<span class="c">// Adapter bridges the gap</span>
+<span class="k">class</span> <span class="t">StripePaymentAdapter</span> <span class="k">implements</span> <span class="t">PaymentGateway</span> {
+    <span class="k">private final</span> <span class="t">StripeClient</span> stripeClient;
+
+    <span class="k">public</span> <span class="t">StripePaymentAdapter</span>(<span class="t">StripeClient</span> client) {
+        <span class="k">this</span>.stripeClient = client;
+    }
+
+    <span class="k">@Override
+    public</span> <span class="t">PaymentResult</span> processPayment(<span class="k">double</span> amount, <span class="t">String</span> currency) {
+        <span class="t">StripeRequest</span> req = <span class="k">new</span> <span class="t">StripeRequest</span>(amount * <span class="m">100</span>, currency);
+        <span class="t">StripeResponse</span> resp = stripeClient.charge(req);
+        <span class="k">return new</span> <span class="t">PaymentResult</span>(resp.getChargeId(), resp.isSuccessful());
+    }
+}</code></pre>
+    </div>
+
+    <div class="pattern-section">
+      <div class="pattern-header">
+        <span class="pattern-badge badge-structural">Structural</span>
+        <span class="pattern-title">Decorator</span>
+      </div>
+      <div class="when-to-use"><strong>When to use:</strong> Add behavior to objects at runtime without changing their class.</div>
+      <pre data-lang="java"><code><span class="k">interface</span> <span class="t">Logger</span> { <span class="k">void</span> log(<span class="t">String</span> message); }
+
+<span class="k">class</span> <span class="t">ConsoleLogger</span> <span class="k">implements</span> <span class="t">Logger</span> {
+    <span class="k">public void</span> log(<span class="t">String</span> message) { System.out.println(message); }
+}
+
+<span class="k">abstract class</span> <span class="t">LoggerDecorator</span> <span class="k">implements</span> <span class="t">Logger</span> {
+    <span class="k">protected final</span> <span class="t">Logger</span> wrapped;
+    <span class="t">LoggerDecorator</span>(<span class="t">Logger</span> logger) { <span class="k">this</span>.wrapped = logger; }
+}
+
+<span class="k">class</span> <span class="t">TimestampLogger</span> <span class="k">extends</span> <span class="t">LoggerDecorator</span> {
+    <span class="t">TimestampLogger</span>(<span class="t">Logger</span> logger) { <span class="k">super</span>(logger); }
+    <span class="k">public void</span> log(<span class="t">String</span> message) {
+        wrapped.log(<span class="s">"["</span> + Instant.now() + <span class="s">"] "</span> + message);
+    }
+}
+
+<span class="k">class</span> <span class="t">MetricsLogger</span> <span class="k">extends</span> <span class="t">LoggerDecorator</span> {
+    <span class="t">MetricsLogger</span>(<span class="t">Logger</span> logger) { <span class="k">super</span>(logger); }
+    <span class="k">public void</span> log(<span class="t">String</span> message) {
+        <span class="k">long</span> start = System.nanoTime();
+        wrapped.log(message);
+        MetricsRegistry.record(<span class="s">"log.latency"</span>, System.nanoTime() - start);
+    }
+}
+
+<span class="c">// Usage — chain decorators</span>
+<span class="t">Logger</span> logger = <span class="k">new</span> <span class="t">MetricsLogger</span>(<span class="k">new</span> <span class="t">TimestampLogger</span>(<span class="k">new</span> <span class="t">ConsoleLogger</span>()));
+logger.log(<span class="s">"Order placed"</span>);</code></pre>
+    </div>
+
+    <!-- BEHAVIORAL -->
+    <h4 style="font-size:13px;font-weight:700;margin:24px 0 12px;color:var(--text2);">Behavioral Patterns</h4>
+
+    <div class="pattern-section">
+      <div class="pattern-header">
+        <span class="pattern-badge badge-behavioral">Behavioral</span>
+        <span class="pattern-title">Strategy</span>
+      </div>
+      <div class="when-to-use"><strong>When to use:</strong> Multiple algorithms/behaviors that are interchangeable. Eliminates if-else chains. Amazon use cases: pricing strategy, discount calculation, route selection, retry policies.</div>
+      <pre data-lang="java"><code><span class="k">interface</span> <span class="t">SortStrategy</span> { <span class="k">void</span> sort(<span class="k">int</span>[] data); }
+
+<span class="k">class</span> <span class="t">QuickSort</span> <span class="k">implements</span> <span class="t">SortStrategy</span> {
+    <span class="k">public void</span> sort(<span class="k">int</span>[] data) { <span class="c">/* quicksort impl */</span> }
+}
+<span class="k">class</span> <span class="t">MergeSort</span> <span class="k">implements</span> <span class="t">SortStrategy</span> {
+    <span class="k">public void</span> sort(<span class="k">int</span>[] data) { <span class="c">/* mergesort impl */</span> }
+}
+
+<span class="k">class</span> <span class="t">DataProcessor</span> {
+    <span class="k">private</span> <span class="t">SortStrategy</span> strategy;
+    <span class="k">public void</span> setStrategy(<span class="t">SortStrategy</span> s) { <span class="k">this</span>.strategy = s; }
+    <span class="k">public void</span> process(<span class="k">int</span>[] data) { strategy.sort(data); }
+}</code></pre>
+    </div>
+
+    <div class="pattern-section">
+      <div class="pattern-header">
+        <span class="pattern-badge badge-behavioral">Behavioral</span>
+        <span class="pattern-title">Observer</span>
+      </div>
+      <div class="when-to-use"><strong>When to use:</strong> One-to-many dependency — when one object changes state, all dependents are notified.</div>
+      <pre data-lang="java"><code><span class="k">interface</span> <span class="t">OrderEventListener</span> {
+    <span class="k">void</span> onOrderPlaced(<span class="t">Order</span> order);
+}
+
+<span class="k">class</span> <span class="t">OrderEventPublisher</span> {
+    <span class="k">private final</span> <span class="t">List</span>&lt;<span class="t">OrderEventListener</span>&gt; listeners = <span class="k">new</span> <span class="t">ArrayList</span>&lt;&gt;();
+
+    <span class="k">public void</span> subscribe(<span class="t">OrderEventListener</span> l)   { listeners.add(l); }
+    <span class="k">public void</span> unsubscribe(<span class="t">OrderEventListener</span> l) { listeners.remove(l); }
+
+    <span class="k">public void</span> notifyOrderPlaced(<span class="t">Order</span> order) {
+        listeners.forEach(l -> l.onOrderPlaced(order));
+    }
+}
+
+<span class="k">class</span> <span class="t">EmailNotificationListener</span> <span class="k">implements</span> <span class="t">OrderEventListener</span> {
+    <span class="k">public void</span> onOrderPlaced(<span class="t">Order</span> o) { <span class="c">/* send confirmation email */</span> }
+}
+<span class="k">class</span> <span class="t">InventoryUpdateListener</span> <span class="k">implements</span> <span class="t">OrderEventListener</span> {
+    <span class="k">public void</span> onOrderPlaced(<span class="t">Order</span> o) { <span class="c">/* reduce stock */</span> }
+}
+<span class="k">class</span> <span class="t">AnalyticsListener</span> <span class="k">implements</span> <span class="t">OrderEventListener</span> {
+    <span class="k">public void</span> onOrderPlaced(<span class="t">Order</span> o) { <span class="c">/* record event in analytics */</span> }
+}</code></pre>
+    </div>
+
+    <div class="pattern-section">
+      <div class="pattern-header">
+        <span class="pattern-badge badge-behavioral">Behavioral</span>
+        <span class="pattern-title">Command</span>
+      </div>
+      <div class="when-to-use"><strong>When to use:</strong> Encapsulate requests as objects — enables undo/redo, queuing, logging of operations.</div>
+      <pre data-lang="java"><code><span class="k">interface</span> <span class="t">Command</span> {
+    <span class="k">void</span> execute();
+    <span class="k">void</span> undo();
+}
+
+<span class="k">class</span> <span class="t">PlaceOrderCommand</span> <span class="k">implements</span> <span class="t">Command</span> {
+    <span class="k">private final</span> <span class="t">OrderService</span> orderService;
+    <span class="k">private final</span> <span class="t">Order</span> order;
+
+    <span class="t">PlaceOrderCommand</span>(<span class="t">OrderService</span> svc, <span class="t">Order</span> order) {
+        <span class="k">this</span>.orderService = svc;
+        <span class="k">this</span>.order = order;
+    }
+
+    <span class="k">public void</span> execute() { orderService.place(order); }
+    <span class="k">public void</span> undo()    { orderService.cancel(order); }
+}
+
+<span class="k">class</span> <span class="t">CommandHistory</span> {
+    <span class="k">private final</span> <span class="t">Deque</span>&lt;<span class="t">Command</span>&gt; history = <span class="k">new</span> <span class="t">ArrayDeque</span>&lt;&gt;();
+
+    <span class="k">public void</span> execute(<span class="t">Command</span> cmd) { cmd.execute(); history.push(cmd); }
+    <span class="k">public void</span> undo() { <span class="k">if</span> (!history.isEmpty()) history.pop().undo(); }
+}</code></pre>
+    </div>
+  </div>
+
+  <!-- PHASE 3: BUILDING BLOCKS -->
+  <div id="building-blocks" class="subsection">
+    <h3 class="subsection-title">Phase 3: LLD Building Blocks (Week 4–5)</h3>
+
+    <h4 style="font-size:13px;font-weight:700;margin:16px 0 10px;color:var(--text2);">Class Design Principles</h4>
+    <ul class="checklist">
+      <li>Each class should map to a <strong>real-world concept</strong> in the domain</li>
+      <li>Avoid anemic domain models (classes that are just bags of fields with no behavior)</li>
+      <li>Name classes using <strong>nouns</strong>, methods using <strong>verbs</strong></li>
+      <li>Keep classes <strong>small and focused</strong></li>
+    </ul>
+
+    <h4 style="font-size:13px;font-weight:700;margin:20px 0 10px;color:var(--text2);">Dependency Injection</h4>
+    <pre data-lang="java"><code><span class="c">// Instead of hard-coding:</span>
+<span class="k">class</span> <span class="t">OrderService</span> {
+    <span class="k">private</span> <span class="t">EmailSender</span> sender = <span class="k">new</span> <span class="t">SMTPEmailSender</span>(); <span class="c">// hard-coded — BAD</span>
+}
+
+<span class="c">// Do this — inject via constructor:</span>
+<span class="k">class</span> <span class="t">OrderService</span> {
+    <span class="k">private final</span> <span class="t">NotificationSender</span> sender;
+    
+    <span class="k">public</span> <span class="t">OrderService</span>(<span class="t">NotificationSender</span> sender) {
+        <span class="k">this</span>.sender = sender; <span class="c">// Testable, swappable, loosely coupled</span>
+    }
+}</code></pre>
+
+    <h4 style="font-size:13px;font-weight:700;margin:20px 0 10px;color:var(--text2);">Enums for State and Type</h4>
+    <pre data-lang="java"><code><span class="k">enum</span> <span class="t">OrderStatus</span> {
+    PENDING, CONFIRMED, SHIPPED, DELIVERED, CANCELLED, REFUNDED;
+
+    <span class="k">public boolean</span> canTransitionTo(<span class="t">OrderStatus</span> next) {
+        <span class="k">return switch</span> (<span class="k">this</span>) {
+            <span class="k">case</span> PENDING   -> next == CONFIRMED || next == CANCELLED;
+            <span class="k">case</span> CONFIRMED -> next == SHIPPED  || next == CANCELLED;
+            <span class="k">case</span> SHIPPED   -> next == DELIVERED;
+            <span class="k">default</span>        -> <span class="k">false</span>;
+        };
+    }
+}</code></pre>
+
+    <h4 style="font-size:13px;font-weight:700;margin:20px 0 10px;color:var(--text2);">Error Handling — Domain Exception Hierarchy</h4>
+    <pre data-lang="java"><code><span class="c">// Define a hierarchy of domain exceptions — never use for flow control</span>
+<span class="k">class</span> <span class="t">OrderException</span>            <span class="k">extends</span> <span class="t">RuntimeException</span> { ... }
+<span class="k">class</span> <span class="t">OrderNotFoundException</span>    <span class="k">extends</span> <span class="t">OrderException</span>  { ... }
+<span class="k">class</span> <span class="t">InsufficientStockException</span> <span class="k">extends</span> <span class="t">OrderException</span>  { ... }
+<span class="k">class</span> <span class="t">PaymentFailedException</span>     <span class="k">extends</span> <span class="t">OrderException</span>  { ... }</code></pre>
+  </div>
+
+  <!-- PHASE 4: CONCURRENCY -->
+  <div id="concurrency" class="subsection">
+    <h3 class="subsection-title">Phase 4: Concurrency &amp; Multithreading (Week 5–6)</h3>
+    <p>This is heavily tested for SDE-2 and <strong>CRITICAL</strong> for SDE-3 at Amazon.</p>
+
+    <div class="concept-grid">
+      <div class="concept-row"><div class="concept-term">Race Condition</div><div class="concept-def">Two threads read-modify-write shared state non-atomically</div></div>
+      <div class="concept-row"><div class="concept-term">Deadlock</div><div class="concept-def">Thread A holds Lock1, wants Lock2; Thread B holds Lock2, wants Lock1</div></div>
+      <div class="concept-row"><div class="concept-term">Livelock</div><div class="concept-def">Threads keep reacting to each other without making progress</div></div>
+      <div class="concept-row"><div class="concept-term">Starvation</div><div class="concept-def">Low-priority thread never gets CPU time</div></div>
+      <div class="concept-row"><div class="concept-term">Visibility</div><div class="concept-def">Changes in one thread may not be seen by another without <code>volatile</code>/<code>synchronized</code></div></div>
+    </div>
+
+    <h4 style="font-size:13px;font-weight:700;margin:20px 0 12px;color:var(--text2);">Thread-Safe LRU Cache with ReadWriteLock</h4>
+    <pre data-lang="java"><code><span class="k">public class</span> <span class="t">ThreadSafeLRUCache</span>&lt;<span class="t">K</span>, <span class="t">V</span>&gt; {
+    <span class="k">private final int</span> capacity;
+    <span class="k">private final</span> <span class="t">LinkedHashMap</span>&lt;<span class="t">K</span>, <span class="t">V</span>&gt; cache;
+    <span class="k">private final</span> <span class="t">ReadWriteLock</span> lock = <span class="k">new</span> <span class="t">ReentrantReadWriteLock</span>();
+
+    <span class="k">public</span> <span class="t">ThreadSafeLRUCache</span>(<span class="k">int</span> capacity) {
+        <span class="k">this</span>.capacity = capacity;
+        <span class="k">this</span>.cache = <span class="k">new</span> <span class="t">LinkedHashMap</span>&lt;&gt;(capacity, <span class="m">0.75f</span>, <span class="k">true</span>) {
+            <span class="k">protected boolean</span> removeEldestEntry(<span class="t">Map.Entry</span>&lt;<span class="t">K</span>, <span class="t">V</span>&gt; eldest) {
+                <span class="k">return</span> size() &gt; capacity;
+            }
+        };
+    }
+
+    <span class="k">public</span> <span class="t">V</span> get(<span class="t">K</span> key) {
+        lock.readLock().lock();
+        <span class="k">try</span> { <span class="k">return</span> cache.getOrDefault(key, <span class="k">null</span>); }
+        <span class="k">finally</span> { lock.readLock().unlock(); }
+    }
+
+    <span class="k">public void</span> put(<span class="t">K</span> key, <span class="t">V</span> value) {
+        lock.writeLock().lock();
+        <span class="k">try</span> { cache.put(key, value); }
+        <span class="k">finally</span> { lock.writeLock().unlock(); }
+    }
+}</code></pre>
+
+    <h4 style="font-size:13px;font-weight:700;margin:20px 0 12px;color:var(--text2);">Producer-Consumer with BlockingQueue</h4>
+    <pre data-lang="java"><code><span class="k">public class</span> <span class="t">OrderProcessor</span> {
+    <span class="k">private final</span> <span class="t">BlockingQueue</span>&lt;<span class="t">Order</span>&gt; queue;
+    <span class="k">private final</span> <span class="t">ExecutorService</span> pool;
+
+    <span class="k">public</span> <span class="t">OrderProcessor</span>(<span class="k">int</span> capacity, <span class="k">int</span> consumers) {
+        <span class="k">this</span>.queue = <span class="k">new</span> <span class="t">ArrayBlockingQueue</span>&lt;&gt;(capacity);
+        <span class="k">this</span>.pool  = Executors.newFixedThreadPool(consumers);
+    }
+
+    <span class="k">public void</span> start() {
+        pool.submit(<span class="k">this</span>::processOrders);
+    }
+
+    <span class="k">public void</span> submit(<span class="t">Order</span> order) <span class="k">throws</span> <span class="t">InterruptedException</span> {
+        queue.put(order); <span class="c">// blocks if queue is full (backpressure)</span>
+    }
+
+    <span class="k">private void</span> processOrders() {
+        <span class="k">while</span> (!<span class="t">Thread</span>.currentThread().isInterrupted()) {
+            <span class="k">try</span> {
+                <span class="t">Order</span> order = queue.take(); <span class="c">// blocks if queue is empty</span>
+                <span class="c">// process order</span>
+            } <span class="k">catch</span> (<span class="t">InterruptedException</span> e) {
+                <span class="t">Thread</span>.currentThread().interrupt();
+            }
+        }
+    }
+}</code></pre>
+
+    <h4 style="font-size:13px;font-weight:700;margin:20px 0 12px;color:var(--text2);">Deadlock Prevention</h4>
+    <pre data-lang="java"><code><span class="c">// RULE: Always acquire locks in a consistent total order</span>
+
+<span class="c">// BAD: Can deadlock — Thread 1 locks A wants B; Thread 2 locks B wants A</span>
+<span class="k">void</span> transfer(<span class="t">Account</span> from, <span class="t">Account</span> to, <span class="k">double</span> amount) {
+    <span class="k">synchronized</span> (from) {
+        <span class="k">synchronized</span> (to) { from.debit(amount); to.credit(amount); }
+    }
+}
+
+<span class="c">// GOOD: Impose a total order on lock acquisition</span>
+<span class="k">void</span> transfer(<span class="t">Account</span> from, <span class="t">Account</span> to, <span class="k">double</span> amount) {
+    <span class="t">Account</span> first  = from.getId() &lt; to.getId() ? from : to;
+    <span class="t">Account</span> second = from.getId() &lt; to.getId() ? to   : from;
+
+    <span class="k">synchronized</span> (first) {
+        <span class="k">synchronized</span> (second) { from.debit(amount); to.credit(amount); }
+    }
+}</code></pre>
+  </div>
+
+  <!-- PHASE 5: PROBLEM SOLVING -->
+  <div id="problem-solving" class="subsection">
+    <h3 class="subsection-title">Phase 5: Step-by-Step Approach to ANY LLD Question</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-title">Requirement Clarification (3–4 min)</div><div class="step-desc">Ask "What are the core features?", "Are there constraints (concurrency, scale)?", "What should I NOT design?" — Repeat back to confirm.</div></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-title">Identify Entities (2–3 min)</div><div class="step-desc">List real-world objects/concepts. Every noun in the requirements is a potential class.</div></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-title">Define Classes & Interfaces (5 min)</div><div class="step-desc">Decide which are concrete classes, which are interfaces. Apply SOLID immediately.</div></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><div class="step-title">Define Relationships (3 min)</div><div class="step-desc">Association, Composition, Aggregation, Inheritance. Sketch a quick text class diagram.</div></div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-content"><div class="step-title">Add Methods & Attributes (5 min)</div><div class="step-desc">Focus on behavior first, fields second. Define public API before internals.</div></div></div>
+      <div class="step"><div class="step-num">6</div><div class="step-content"><div class="step-title">Code the Core Flow (15–20 min)</div><div class="step-desc">Start with the most important use case. Write clean, compilable code — not pseudocode. Narrate as you code.</div></div></div>
+      <div class="step"><div class="step-num">7</div><div class="step-content"><div class="step-title">Handle Edge Cases (3–5 min)</div><div class="step-desc">Null inputs, boundary values, invalid state transitions. Mention concurrency explicitly for SDE-3.</div></div></div>
+      <div class="step"><div class="step-num">8</div><div class="step-content"><div class="step-title">Discuss Tradeoffs (3–5 min)</div><div class="step-desc">"I chose X over Y because…" / "If requirements change to Z, I would…"</div></div></div>
+    </div>
+
+    <h4 style="font-size:13px;font-weight:700;margin:24px 0 10px;color:var(--text2);">45-Minute Time Breakdown</h4>
+    <div class="time-bar">
+      <div class="time-row"><div class="time-label">0–5 min</div><div class="time-track"><div class="time-fill" style="width:11%;background:var(--accent);"></div></div><div class="time-desc">Clarify requirements, define scope</div></div>
+      <div class="time-row"><div class="time-label">5–10 min</div><div class="time-track"><div class="time-fill" style="width:22%;background:var(--blue);"></div></div><div class="time-desc">Identify entities, sketch class diagram</div></div>
+      <div class="time-row"><div class="time-label">10–15 min</div><div class="time-track"><div class="time-fill" style="width:33%;background:var(--purple);"></div></div><div class="time-desc">Define interfaces and core classes</div></div>
+      <div class="time-row"><div class="time-label">15–35 min</div><div class="time-track"><div class="time-fill" style="width:78%;background:var(--green);"></div></div><div class="time-desc">Write code for the core use case</div></div>
+      <div class="time-row"><div class="time-label">35–42 min</div><div class="time-track"><div class="time-fill" style="width:93%;background:var(--yellow);"></div></div><div class="time-desc">Concurrency / edge cases / extensions</div></div>
+      <div class="time-row"><div class="time-label">42–45 min</div><div class="time-track"><div class="time-fill" style="width:100%;background:var(--accent2);"></div></div><div class="time-desc">Discuss tradeoffs and summarize</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ SECTION 3 ══════════════════════════════════════ -->
+<section id="section-3" class="section">
+  <div class="section-header">
+    <span class="section-number">Section 03</span>
+    <h2 class="section-title">Amazon-Specific Strategy</h2>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">3.1 Interview Format (India &amp; Malaysia)</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">India (BLR / HYD / CHN)</div>
+        <div class="card-title">4–6 Rounds</div>
+        <div class="card-body">1–2 LLD rounds, 1–2 HLD, rest behavioral + coding. In-person or virtual via Chime.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Malaysia (KL / Penang)</div>
+        <div class="card-title">Similar Structure</div>
+        <div class="card-body">Often virtual-first with shared code editor (CoderPad / Amazon Chime + code share).</div>
+      </div>
+    </div>
+    <p style="margin-top:16px;">Typical flow: Interviewer gives a 2-line problem → You ask clarifying questions (graded) → Verbal/whiteboard design → Write code (Java preferred, Python acceptable) → Interviewer extends 1–2 times → Debrief on scale.</p>
+  </div>
+
+  <div id="lp-section" class="subsection">
+    <h3 class="subsection-title">3.2 Leadership Principles in LLD Rounds</h3>
+    <p>Amazon explicitly maps design decisions to Leadership Principles. Demonstrate them naturally:</p>
+    <div class="lp-grid">
+      <div class="lp-row"><div class="lp-label">Customer Obsession</div><div class="lp-desc">"I want to make sure the API is intuitive for the caller"</div></div>
+      <div class="lp-row"><div class="lp-label">Ownership</div><div class="lp-desc">"I'd also handle the edge case of concurrent updates, even though it wasn't asked"</div></div>
+      <div class="lp-row"><div class="lp-label">Invent & Simplify</div><div class="lp-desc">"Instead of this complex approach, here's a simpler pattern that achieves the same result"</div></div>
+      <div class="lp-row"><div class="lp-label">Dive Deep</div><div class="lp-desc">"Let me think through the thread safety implications of this shared cache"</div></div>
+      <div class="lp-row"><div class="lp-label">Bias for Action</div><div class="lp-desc">"Let me start coding the core flow and we can refine as we go"</div></div>
+      <div class="lp-row"><div class="lp-label">Think Big</div><div class="lp-desc">"If this system needs to handle 10x load, this interface allows us to swap the impl"</div></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">3.3 How to Explain Design While Coding</h3>
+    <p>Narrate at THREE levels simultaneously:</p>
+    <div class="card-grid">
+      <div class="card"><div class="card-label">Level 1 — What</div><div class="card-body">"I'm creating an <code>OrderProcessor</code> class"</div></div>
+      <div class="card"><div class="card-label">Level 2 — Why</div><div class="card-body">"It's separate from <code>OrderService</code> so it follows SRP"</div></div>
+      <div class="card"><div class="card-label">Level 3 — How it fits</div><div class="card-body">"It implements the <code>Processor&lt;Order&gt;</code> interface so we can swap implementations"</div></div>
+    </div>
+    <div class="callout info" style="margin-top:16px;">
+      <div class="callout-icon">💬</div>
+      <div><strong>Sample narration:</strong> "I'm defining the <code>Vehicle</code> interface here with <code>getType()</code> and <code>getSize()</code> methods. I'm using an interface rather than a base class because vehicles don't share any state — only behavior. Now I'll create <code>Car</code>, <code>Motorcycle</code>, and <code>Truck</code> implementing this. This makes it easy to add new vehicle types without changing the parking lot logic — that's the Open/Closed principle at work."</div>
+    </div>
+  </div>
+
+  <div id="extensions" class="subsection">
+    <h3 class="subsection-title">3.4 How Interviewers Extend Problems</h3>
+    <p>Every LLD problem at Amazon <strong>will</strong> be extended. Be ready for these common extensions:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Original Problem</th><th>Common Extensions</th></tr></thead>
+        <tbody>
+          <tr><td>Parking Lot</td><td>Add pricing model, add EV charging spots, handle reservations</td></tr>
+          <tr><td>LRU Cache</td><td>Make it distributed, add TTL expiry, add write-through</td></tr>
+          <tr><td>Rate Limiter</td><td>Switch from token bucket to sliding window, add per-user limits</td></tr>
+          <tr><td>Notification System</td><td>Add retry logic, add priority queues, add templating</td></tr>
+          <tr><td>Elevator</td><td>Add maintenance mode, add fire evacuation mode, optimize for energy</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout info"><div class="callout-icon">💡</div><div><strong>Strategy:</strong> After your initial design, proactively say: "I've designed this with extensibility in mind — for example, adding a new vehicle type or pricing strategy would only require a new class, no existing code changes."</div></div>
+  </div>
+
+  <div id="common-traps" class="subsection">
+    <h3 class="subsection-title">3.5 Common Traps Candidates Fall Into</h3>
+    <ul class="checklist">
+      <li><strong>Designing only the happy path</strong> — Always mention what happens when things fail</li>
+      <li><strong>Static methods everywhere</strong> — Shows poor OOP; use instances and inject dependencies</li>
+      <li><strong>Using <code>public</code> fields</strong> — Always encapsulate; use getters/setters</li>
+      <li><strong>Not defining enums</strong> — Status, types, categories should always be enums, never Strings</li>
+      <li><strong>Skipping interfaces</strong> — "I'll just use concrete classes for now" is a red flag</li>
+      <li><strong>Premature optimization</strong> — Don't add caching, indexing, sharding unless asked</li>
+      <li><strong>Ignoring null cases</strong> — Show defensive programming</li>
+      <li><strong>Forgetting <code>equals</code>/<code>hashCode</code></strong> — Required when objects go into Maps/Sets</li>
+      <li><strong>Using global state</strong> — Avoid static mutable state; use DI</li>
+      <li><strong>Not handling the extension question</strong> — Where Bar Raiser separates strong from average</li>
+    </ul>
+
+    <h4 style="font-size:13px;font-weight:700;margin:20px 0 10px;color:var(--text2);">Common Mistakes in Amazon Interviews</h4>
+    <div class="mistake-grid">
+      <div class="mistake-row"><div class="mistake-col-bad">Jumping to code immediately</div><div class="mistake-col-fix">Always spend 5+ min on requirements and design</div></div>
+      <div class="mistake-row"><div class="mistake-col-bad">God classes — doing everything in one class</div><div class="mistake-col-fix">Ask yourself: "Does this class have ONE responsibility?"</div></div>
+      <div class="mistake-row"><div class="mistake-col-bad">Forgetting to use interfaces</div><div class="mistake-col-fix">Every dependency should go through an abstraction</div></div>
+      <div class="mistake-row"><div class="mistake-col-bad">Ignoring concurrency entirely</div><div class="mistake-col-fix">Proactively mention thread safety even if not asked</div></div>
+      <div class="mistake-row"><div class="mistake-col-bad">Over-engineering the solution</div><div class="mistake-col-fix">Design for stated requirements; mention extensions verbally</div></div>
+      <div class="mistake-row"><div class="mistake-col-bad">Coding in complete silence</div><div class="mistake-col-fix">Never code silently — narrate your thinking constantly</div></div>
+      <div class="mistake-row"><div class="mistake-col-bad">Forcing wrong patterns</div><div class="mistake-col-fix">Don't force patterns; explain why a pattern fits</div></div>
+      <div class="mistake-row"><div class="mistake-col-bad">Never asking for feedback</div><div class="mistake-col-fix">Ask "Does this meet what you had in mind?"</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ SECTION 6 ══════════════════════════════════════ -->
+<section id="section-6" class="section">
+  <div class="section-header">
+    <span class="section-number">Section 04</span>
+    <h2 class="section-title">Final Preparation Strategy</h2>
+  </div>
+
+  <!-- 30-Day Plan -->
+  <div class="subsection">
+    <h3 class="subsection-title">30-Day Revision Plan</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Week</th><th>Focus</th><th>Goal</th></tr></thead>
+        <tbody>
+          <tr><td>Week 1</td><td>OOP + SOLID + UML review</td><td>Code 2 examples per principle</td></tr>
+          <tr><td>Week 2</td><td>Design Patterns</td><td>2 patterns/day with code + use cases</td></tr>
+          <tr><td>Week 3</td><td>10 LLD problems (Beginner + Intermediate)</td><td>Full code with explanations</td></tr>
+          <tr><td>Week 4</td><td>10 more (Intermediate + Advanced)</td><td>3 full mock interviews</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h4 style="font-size:13px;font-weight:700;margin:20px 0 10px;color:var(--text2);">Daily Practice Schedule (2 hours/day)</h4>
+    <div class="steps">
+      <div class="step"><div class="step-num">30m</div><div class="step-content"><div class="step-title">Review one concept/pattern</div><div class="step-desc">Notes + code examples</div></div></div>
+      <div class="step"><div class="step-num">45m</div><div class="step-content"><div class="step-title">Solve one LLD problem from scratch</div><div class="step-desc">Set a 45-minute timer; simulate real interview conditions</div></div></div>
+      <div class="step"><div class="step-num">30m</div><div class="step-content"><div class="step-title">Review a reference solution and compare</div><div class="step-desc">Identify gaps in your approach</div></div></div>
+      <div class="step"><div class="step-num">15m</div><div class="step-content"><div class="step-title">Update personal cheat sheet</div><div class="step-desc">Note down gaps and new insights</div></div></div>
+    </div>
+  </div>
+
+  <!-- Must-Do Topics -->
+  <div class="subsection">
+    <h3 class="subsection-title">Must-Do vs Optional Topics</h3>
+    <div class="card-grid">
+      <div class="card" style="border-color:rgba(67,233,123,0.3);">
+        <div class="card-label" style="color:var(--green);">Must Do — Zero Compromise</div>
+        <ul class="checklist" style="margin-top:10px;">
+          <li>SOLID principles with code examples</li>
+          <li>Factory, Singleton (thread-safe), Builder, Strategy, Observer, Decorator, Command</li>
+          <li>Parking Lot, LRU Cache, Rate Limiter, Elevator, Notification System</li>
+          <li>Thread safety: synchronized, ReentrantLock, BlockingQueue, volatile</li>
+          <li>State machine design with enums</li>
+          <li>Dependency injection pattern</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:rgba(79,172,254,0.3);">
+        <div class="card-label" style="color:var(--blue);">Should Do — High Value</div>
+        <ul class="checklist" style="margin-top:10px;">
+          <li>Composite pattern (File System)</li>
+          <li>Proxy pattern (Lazy loading, Access control)</li>
+          <li>Iterator pattern</li>
+          <li>Template Method pattern</li>
+          <li>Event-driven architecture in LLD</li>
+          <li>Order Management, Splitwise, Library Management</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:rgba(167,139,250,0.3);">
+        <div class="card-label" style="color:var(--purple);">Optional — Good to Know</div>
+        <ul class="checklist" style="margin-top:10px;">
+          <li>Flyweight, Memento, Chain of Responsibility</li>
+          <li>Reactive/Async design patterns</li>
+          <li>gRPC/REST as part of LLD interface</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mock Interview -->
+  <div class="subsection">
+    <h3 class="subsection-title">Mock Interview Strategy</h3>
+    <div class="card-grid">
+      <div class="card"><div class="card-label">Solo Practice</div><div class="card-title">Timed Whiteboarding</div><div class="card-body">Pick a problem, set a 45-min timer, whiteboard/code from scratch</div></div>
+      <div class="card"><div class="card-label">Pair Practice</div><div class="card-title">Pramp / Interviewing.io</div><div class="card-body">Free peer mock interviews; anonymous mocks with FAANG engineers</div></div>
+      <div class="card"><div class="card-label">Self-Review</div><div class="card-title">Record Yourself</div><div class="card-body">Narration is 30% of the score; watch it back and identify silence gaps</div></div>
+      <div class="card"><div class="card-label">Solution Review</div><div class="card-title">GitHub Reference</div><div class="card-body">Review: <code>tssovi/grokking-the-object-oriented-design-interview</code></div></div>
+    </div>
+  </div>
+
+  <!-- Resources -->
+  <div id="resources" class="subsection">
+    <h3 class="subsection-title">Recommended Resources</h3>
+    <div class="resource-grid">
+      <div class="resource-card"><div class="resource-type">Book</div><div class="resource-name">Head First Design Patterns</div><div class="resource-why">Best intro to patterns with visual examples</div></div>
+      <div class="resource-card"><div class="resource-type">Book</div><div class="resource-name">Clean Code</div><div class="resource-why">Code quality fundamentals by Robert Martin</div></div>
+      <div class="resource-card"><div class="resource-type">Book</div><div class="resource-name">Effective Java</div><div class="resource-why">Java-specific best practices by Joshua Bloch</div></div>
+      <div class="resource-card"><div class="resource-type">Book</div><div class="resource-name">Designing Data-Intensive Applications</div><div class="resource-why">Bridges LLD and HLD thinking</div></div>
+      <div class="resource-card"><div class="resource-type">GitHub</div><div class="resource-name">tssovi/grokking-the-object-oriented-design-interview</div><div class="resource-why">Most referenced OOD interview repo</div></div>
+      <div class="resource-card"><div class="resource-type">GitHub</div><div class="resource-name">ashishps1/awesome-low-level-design</div><div class="resource-why">Clean code with full solutions</div></div>
+      <div class="resource-card"><div class="resource-type">Platform</div><div class="resource-name">Educative.io</div><div class="resource-why">"Grokking the Low Level Design Interview" course</div></div>
+      <div class="resource-card"><div class="resource-type">YouTube</div><div class="resource-name">Gaurav Sen / TechDummies / Concept&&Coding</div><div class="resource-why">Free visual LLD and HLD walkthroughs</div></div>
+    </div>
+  </div>
+
+  <!-- CHEAT SHEET -->
+  <div id="cheatsheet" class="subsection">
+    <h3 class="subsection-title">Personal Cheat Sheet</h3>
+    <div class="cheatsheet">
+      <h4>Design Process</h4>
+      <p><span class="trigger">Step flow:</span> <span class="solution">Clarify → Entities → Classes → Relationships → Code → Edge Cases → Tradeoffs</span></p>
+
+      <h4>SOLID Triggers</h4>
+      <p><span class="trigger">Too many responsibilities</span> → <span class="solution">SRP — split the class</span></p>
+      <p><span class="trigger">Adding new types forces code changes</span> → <span class="solution">OCP — use Strategy / Factory</span></p>
+      <p><span class="trigger">Inheritance issues / subclass breaks parent contract</span> → <span class="solution">LSP — prefer Composition</span></p>
+      <p><span class="trigger">Too many interface methods unrelated to role</span> → <span class="solution">ISP — segregate into thin interfaces</span></p>
+      <p><span class="trigger">Hard dependency on concrete class</span> → <span class="solution">DIP — constructor injection with interface</span></p>
+
+      <h4>Pattern Triggers</h4>
+      <p><span class="trigger">Multiple algorithms / interchangeable behavior</span> → <span class="solution">Strategy</span></p>
+      <p><span class="trigger">One object changes, many must react</span> → <span class="solution">Observer</span></p>
+      <p><span class="trigger">Complex object with optional fields</span> → <span class="solution">Builder</span></p>
+      <p><span class="trigger">Object creation logic complex / runtime decision</span> → <span class="solution">Factory</span></p>
+      <p><span class="trigger">Add behavior to objects at runtime</span> → <span class="solution">Decorator</span></p>
+      <p><span class="trigger">Incompatible interface from third-party</span> → <span class="solution">Adapter</span></p>
+      <p><span class="trigger">Exactly one instance needed</span> → <span class="solution">Singleton (volatile + double-checked locking)</span></p>
+      <p><span class="trigger">Request encapsulation, undo/redo</span> → <span class="solution">Command</span></p>
+
+      <h4>Concurrency Checklist</h4>
+      <p><span class="trigger">Shared mutable state?</span> → <span class="solution">Need a lock</span></p>
+      <p><span class="trigger">Mostly reads, occasional writes?</span> → <span class="solution">ReadWriteLock</span></p>
+      <p><span class="trigger">Single counter or flag?</span> → <span class="solution">AtomicInteger / AtomicBoolean</span></p>
+      <p><span class="trigger">Producer-consumer queue?</span> → <span class="solution">BlockingQueue</span></p>
+      <p><span class="trigger">Concurrent map access?</span> → <span class="solution">ConcurrentHashMap</span></p>
+      <p><span class="trigger">One instance, multi-threaded creation?</span> → <span class="solution">volatile + double-checked locking</span></p>
+
+      <h4>Communication Phrases</h4>
+      <p><span class="trigger">Making a decision:</span> <span class="solution">"I'll use Strategy pattern here because we may add more discount types later"</span></p>
+      <p><span class="trigger">Acknowledging tradeoffs:</span> <span class="solution">"This approach is simpler but doesn't scale to distributed; for now that seems fine"</span></p>
+      <p><span class="trigger">Inviting feedback:</span> <span class="solution">"Does this direction make sense to you?"</span></p>
+      <p><span class="trigger">Pivoting gracefully:</span> <span class="solution">"Good point, let me reconsider. I'll restructure this…"</span></p>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<footer>
+  <p>Amazon LLD Interview — Complete Preparation Guide &nbsp;·&nbsp; Targeting SDE-2, SDE-3, Senior SDE roles in India &amp; Malaysia</p>
+  <p style="margin-top:8px;">See companion files: <a href="#">Amazon-LLD-Top50-Questions.md</a> &nbsp;&amp;&nbsp; <a href="#">Amazon-LLD-Detailed-Solutions.md</a></p>
+</footer>
+
+</body>
+</html>
