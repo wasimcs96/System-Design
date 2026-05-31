@@ -193,6 +193,36 @@ echo "  Product: {$product->name} ({$product->sku}) ₹" . number_format($produc
 // $product->sku = 'NEW'; // Fatal: Cannot modify readonly property
 echo "  SKU is readonly — cannot be changed after construction ✓\n";
 
+
+# Another Example of Payment Processing
+// Why This Design Works
+// The raw card number is never stored. The constructor masks it immediately, so even if someone accesses the object's internal state through debugging or reflection, they only see the masked version.
+// Masking is handled internally via a private method. The caller doesn't need to know how masking works. They pass the full card number, and the class handles the rest.
+// The external caller has a minimal interface. Just create a PaymentProcessor and call processPayment(). No need to call maskCardNumber() first, no need to worry about storing the original number safely.
+// Changes to the masking logic are contained. If you later decide to mask differently (showing the first 4 instead of the last 4, or using a different format), you change one private method. No external code is affected.
+// This is encapsulation applied to security: sensitive data enters the class, gets transformed into a safe representation, and the original is never exposed.
+class PaymentProcessing{
+
+    private string $cardNumber;
+    public int $amount;
+
+    public function __construct(string $cardNumber, int $amount){
+        $this->cardNumber = $this->setMask($cardNumber);
+        $this->amount = $amount;
+    }
+
+    private function setMask(string $cardNumber){
+        return "***-***-***-1234";
+    }
+
+    public function getPaymentProcess(){
+        return $this->amount. " has been procees with ".$this->cardNumber;
+    }
+}
+
+$payPalPaymentProcess = new PaymentProcessing("0987-6543-9876-1234", 100);
+echo $payPalPaymentProcess->getPaymentProcess();
+
 /**
  * ┌─────────────────────────────────────────────────────────────────┐
  * │ INTERVIEW QUESTIONS & ANSWERS                                    │
