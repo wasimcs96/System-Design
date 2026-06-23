@@ -1,40 +1,70 @@
 1. Deen
 2. Communication Skills (basic to Storytelling)
 3. Data Structure & Algo
-4. Low Level System Design : OOPS -> SOLID -> Design Patterns -> Low Level Design Question Practice
+4. Low Level System Design : https://github.com/ashishps1/awesome-low-level-design?tab=readme-ov-file
 5. High Level System Design 
 6. Minor Tool/Techs : (All Techniques like WebSockets, Auth, JWT, along with Tools like Kafka, Elastic Search, GraphQL ..etc and DevOps). (Called as Distributed System Tools)
 7. New Techs : (NodeJs/MongoDB/PostgreSQL/graphQl/Java)
 8. AI : Skills With AI which Align with Tech Lead or Senior Engineer for future proof jobs 
 9. Business : Work on IDEA (Product) 
 10.Interview Preparation (CV, LinkedIn, Behavioral Rounds)(Start after June)
+11.LeaderShip Skills
+12.Personal Development
+13.Domain Expertise
 
 Some of items that need to be cover
 1. Domain Expertise (SaaS, Fintech) (after point 6)
 
 =====================
-# Start from 20 May
-DS  -> Should be finish by 30 August (90 days from 20 May => 90 * 5 Question Daily = 450) 
-LLD -> Should be Finish by 15 June (25 Days)
-HLD -> Should be Finish by (Start On 16 June) 30 July (In 45 Days)
+Phase - 1 (1 July - 30 Aug = 60 Days) Study Time - 10 Hours
+---------
+1. DS  -> 4.30 Hours (1 July - 30 Aug = 60 Days) 
+60 days => 60 * 5 Question Daily = 300 Question + 130 Already done
+---Parelley----
+1. LLD -> 3.30 Hours (1 July - 30 July = 30 Days)
+(After Finsih LLD)
+2. HLD -> 1 Aug - 30 Aug  (30 Days) - 3 Hours + Revision and Practise LLD - 1 Hour
+---Parelley----
+1. Work on Communication Skills  (1-2 Hour)
 
+==========
+Redesign Phase-2 and Phase-3 later after completion Phase 1
+==========
+Phase - 2 (1 Sep - 30 Sep = 30 Days) Study Time - 10 Hours
+---------
+1. Backend Tech Refresh -> (1 Sep - 15 Sep  (7/7/7/7 - 28 Days + 2 Buffer) - 3 Hour)
+JS With TypeScript/NodeJs/MySql/MongoDB 
+
+2. Distributed tools, DevOps & cloud ->  (1 Sep - 30 Sep = 2.5 Hour)
+AWS, Docker + Kubernetes, CI/CD, Prometheus/Grafana. WebSockets + SSE, OAuth2/OIDC + JWT, Kafka (producers/consumers/partitions), Elasticsearch, GraphQL federation.
+
+3. Behavioral, leadership & negotiation -> (1.5 Hour)
+Work on Communication / Build Resume / Build Job Portal Profiles / Prepared for Behavioral Round + HR Rounds + About Project Discussion + Current Role + 
+Salary Negotiation + LeaderShip + Scanrio based rounds + Job Hunt.
+
+4. Revision - DS  (1 Hour)
+5. Revision - LLD (1 Hour)
+6. Revision - HLD (1 Hour)
+
+Note : Start Applying to companies after 15 September.
+
+Phase - 3 (October)
+--------
+- Mock Interviews
+- Work on weaknesses after each Interview
+- Learn AI Related Stuff which is Advantage for my SSDE or Lead Developer Roles 
+- Job Hunt + Live Interviews
+ 
  
 
- 
+====================
 
-
-
-
-
-
-
-
-Note : - A Chat is exits in CHatGPT as Tech Skills Transition
+Note : - A Chat is exits in CHatGPT/Claude as Tech Skills Transition
 
 ======================
 1. DS -> Follow Striver
 
-2. a)Low Level Design : OOPS -> Design Patterns -> Practice Real world Problems -> Interview Question
+2. OOPS a)Low Level Design : OOPS -> Design Patterns -> Practice Real world Problems -> Interview Question
    b)High Level System Design -> Follow basic in Hindi with Blogs + Follow (Striver + Gaurav) + Ashish Pratap Singh + Follow BytetoByte Channel + Interview Questions Preparation -> 
 
 3. Tools -> Learn all tools one by one and use cases (Ashish + With Devops).
@@ -54,3 +84,12 @@ Future Plans
 
 1. After Learn System Design and DS & Algo, Find Role in AI domain with Current Skills.
 2. Next target Country - Dubai, Saudi, Kuwait, AbuDhabi
+
+
+==========================
+OOPS Topics -> 
+https://algomaster.io/learn/lld
+https://github.com/ashishps1/awesome-low-level-design?tab=readme-ov-file
+https://github.com/tssovi/grokking-the-object-oriented-design-interview/tree/master
+
+
