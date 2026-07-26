@@ -16,39 +16,39 @@ Some of items that need to be cover
 1. Domain Expertise (SaaS, Fintech) (after point 6)
 
 =====================
-Phase - 1 (1 July - 30 Aug = 60 Days) Study Time - 10 Hours
+Phase - 1 (1 July - 30 Sep = 90 Days) Study Time - 10 Hours
 ---------
-1. DS  -> 4.30 Hours (1 July - 30 Aug = 60 Days) 
-60 days => 60 * 5 Question Daily = 300 Question + 130 Already done
+1. DS  -> 4 Hours (1 July - 30 Sep = 90 Days)  3 Hour - New Question + 1 Hour Revision
+90 days => 90 * 3 Question Daily = 270 Question + 100 Already done = Target 370 Questions (Till BST)
+
 ---Parelley----
-1. LLD -> 3.30 Hours (1 July - 30 July = 30 Days)
+1. LLD -> 4 Hours (1 July - 30 July = 30 Days)
 (After Finsih LLD)
-2. HLD -> 1 Aug - 30 Aug  (30 Days) - 3 Hours + Revision and Practise LLD - 1 Hour
+2. HLD -> 3 Hours (1 Aug - 30 Aug  = 30 Days) + Revision and Practise LLD - 1 Hour
+
 ---Parelley----
 1. Work on Communication Skills  (1-2 Hour)
 
 ==========
 Redesign Phase-2 and Phase-3 later after completion Phase 1
 ==========
-Phase - 2 (1 Sep - 30 Sep = 30 Days) Study Time - 10 Hours
+
 ---------
-1. Backend Tech Refresh -> (1 Sep - 15 Sep  (7/7/7/7 - 28 Days + 2 Buffer) - 3 Hour)
+1. Backend Tech Refresh 
 JS With TypeScript/NodeJs/MySql/MongoDB 
 
-2. Distributed tools, DevOps & cloud ->  (1 Sep - 30 Sep = 2.5 Hour)
+2. Distributed tools, DevOps & cloud
 AWS, Docker + Kubernetes, CI/CD, Prometheus/Grafana. WebSockets + SSE, OAuth2/OIDC + JWT, Kafka (producers/consumers/partitions), Elasticsearch, GraphQL federation.
 
-3. Behavioral, leadership & negotiation -> (1.5 Hour)
+3. Behavioral, leadership & negotiation 
 Work on Communication / Build Resume / Build Job Portal Profiles / Prepared for Behavioral Round + HR Rounds + About Project Discussion + Current Role + 
 Salary Negotiation + LeaderShip + Scanrio based rounds + Job Hunt.
 
-4. Revision - DS  (1 Hour)
-5. Revision - LLD (1 Hour)
-6. Revision - HLD (1 Hour)
+4. Revision - DS/LLD/HLD  (1 Hour)
 
-Note : Start Applying to companies after 15 September.
 
-Phase - 3 (October)
+
+Phase - 3 
 --------
 - Mock Interviews
 - Work on weaknesses after each Interview
@@ -60,6 +60,9 @@ Phase - 3 (October)
 ====================
 
 Note : - A Chat is exits in CHatGPT/Claude as Tech Skills Transition
+Note : - Oracle ERP Developer, and Java and some of .Net is required in Qater
+
+Most Area where jobs in demand - Oil, Bank, Goverment Entites in Qater 
 
 ======================
 1. DS -> Follow Striver

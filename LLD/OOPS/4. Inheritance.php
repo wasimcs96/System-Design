@@ -318,6 +318,70 @@ $lion->breathe();    // From AnimalV2
 $lion->huntPrey();   // From WildAnimal
 $lion->roar();       // From Lion
 
+
+class NotificationService {
+
+    protected string $message;
+    protected string $recipient;
+    protected string $timestamp;
+
+    public function __construct(string $message, string $recipient){
+        $this->message = $message;
+        $this->recipient = $recipient;
+        $this->timestamp = date('Y-m-d H:i:s');
+    }
+
+    public function formatHeader(){
+        return "Timestamp: " . $this->timestamp . "\n";
+    }
+
+    public function send(){
+        echo $this->formatHeader();
+        echo "Sending notification to $this->recipient: $this->message\n";
+    }
+}
+
+class EmailNotificationService extends NotificationService {
+    public string $subject;
+
+    public function __construct(string $recipient, string $message, string $subject = "No Subject"){
+        parent::__construct($message, $recipient);
+        $this->subject = $subject;
+    }
+
+   
+    public function send(): void{
+        echo $this->formatHeader();
+        echo "Subject : ". $this->subject. "\n";
+        echo "body : ". $this->message. "\n";
+        echo "Sending email to $this->recipient" . " using EmailNotificationService\n";
+    }
+}
+
+class SmsNotificationService extends NotificationService {
+    public string $phoneNumber;
+
+    public function __construct(string $recipient, string $message, string $phoneNumber = "No Subject"){
+        parent::__construct($message, $recipient);
+        $this->phoneNumber = $phoneNumber;
+    }
+
+   
+    public function send(): void{
+        echo $this->formatHeader();
+        echo "Phone Number : ". $this->phoneNumber. "\n";
+        echo "body : ". $this->message. "\n";
+        echo "Sending SMS to $this->recipient" . " using SmsNotificationService\n";
+    }
+}
+
+
+$emailService = new EmailNotificationService("Rahul@gmail.com", "Hello Rahul, this is a test email.", "Test Email");
+$emailService->send();
+
+$smsService = new SmsNotificationService("Rahul", "Hello Rahul, this is a test SMS.", "1234567890");
+$smsService->send();
+
 /**
  * ┌─────────────────────────────────────────────────────────────────┐
  * │ INTERVIEW QUESTIONS & ANSWERS                                    │

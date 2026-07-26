@@ -1,42 +1,46 @@
 <?php
-class Developer{
+
+class User{
     public string $name;
-    public Team $team;
+    public string $email;
+    public string $password;
 
-    public function __construct(string $name) {
-        $this->name = $name;
+    public function __construct($name, $email, $password){
+        //
     }
 
-    public function assignTeam(Team $team){
-        $this->team = $team;
+    public function setPassowrd(){
+        $this->passowrd = Hash($this->password);
     }
+    
+}
 
-    public function getTeamName(): string {
-        return $this->team->name;
+
+class UserRepositroy{
+    public function save(User $user){
+        //save user data into DB
     }
 }
 
-class Team{
-    public string $name;
-    public array $developers = [];
+class UserNotification{
 
-    public function __construct(string $name){
-        $this->name = $name;
-    }
 
-    public function addDeveloper(Developer $developer){
-        $this->developers[] = $developer;
-        $developer->assignTeam($this);
+    public function sendNotification(User $user){
+        //send Notification
     }
 }
 
-$dev1 = new Developer("Alice");
-$dev2 = new Developer("Bob");
 
-$team1 = new Team("Team A");
-$team1->addDeveloper($dev1);
-//$team1->addDeveloper($dev2);
-echo $dev1->getTeamName();
+class UserService{
+    public function __construct(private UserRepositroy $userRepo, private UserNotification $userNotification){}
+
+    public function register($name, $email, $password){
+        $user = new User($name, $email, $password);
+        $this->userRepo->save($user);
+    } 
+}
 
 
-?>
+
+
+

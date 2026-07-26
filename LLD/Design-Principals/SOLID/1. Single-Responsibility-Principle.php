@@ -245,7 +245,13 @@ class Order
     // Core business logic — ONLY reason to change: pricing rules
     public function getTotal(): float
     {
-        return array_sum(array_map(fn($i) => $i->subtotal(), $this->items));
+        return array_sum(
+                    array_map(
+                        fn($i) => 
+                            $i->subtotal(), 
+                            $this->items
+                        )
+                    );
     }
 }
 

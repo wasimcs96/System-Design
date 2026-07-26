@@ -52,6 +52,7 @@
  * └─────────────────────────────────────────────────────────────────┘
  */
 
+//USE INTERFACE BIKE AND CLASS  MOTERCYCLE AND BICYCLE CLASS FOR ENGINE START AND ACCLEAATE
 echo "=== LISKOV SUBSTITUTION PRINCIPLE ===\n\n";
 
 // ═══════════════════════════════════════════════════════════════
