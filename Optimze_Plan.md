@@ -5,7 +5,7 @@
 
 Not Plan  start giving interview (before i will complete point 7, 8, 9)
 
-5. Minor-Tech - Auth/JWT/WebSocket/Kafka/Redis/Elastic
+5. Distributed System - Auth/JWT/WebSocket/Kafka/Redis/Elastic
 6. DevOps - AWS/Docker/Kubernet/CI-CD 
 
 For point 5and 6 (1 month - Novemeber) 
@@ -20,12 +20,47 @@ Note : In NOvember start mock interview as well.
 ===================================
 
 August :
-DSA / LLD / CS / HR = 3/3/2/1
+DSA / LLD / CS / HR = 3/3/2/1 Hr
+Build Resume + Profile = Night 1 hour
 
 September :
-DSA / HLD / CS / BI / Revision LLD / Build Resume + Profile = 3/2/2/1/1
+DSA / HLD / CS / BI / Revision LLD = 3/2/2/1/1 Hr
+
+build Network Company to Company  + Update JobPortals = Night
+Update All Job Portal + Start Applying = Night 1 hour
 
 OCTOBER :
-DSA / Tech / CS / Revision LLD-HLD-HR-BI / MockInterview / Update All Job Portal + Start Applying
+DSA / Tech / CS / Revision LLD-HLD-HR-BI / MockInterview = 2/3/1/2/1 Hr
+Update All Job Portal + Start Applying = Night 1 hour
 
 November : Revision DSA-LLD-HLD-Tech-HR-BI / MockInterview / Distributed Systems / DevOps / Security + Testing + Observability + Performance
+
+Will Decide letter for Nov month
+
+=======
+1-20 August - LLD
+21-10 Sepe - HLD
+11-30 September - Tech
+
+Parelly- HR/BI/Resume and Profile
+
+
+=======
+August 1 - 20
+
+1. DS - LL (2 Question) + Revision (Array + BinerySearch) 3 Question - 3 Hr
+2. LLD - 3 hr
+3. HR - .5 hr
+4. Build Resume + Profile - .5
+5. Communication Skills. - 2
+
+August 20 - September - 10
+
+1. DS - LL (2 Question) + Revision (Array + BinerySearch) 3 Question - 3 Hr
+2. LLD - 3 hr
+3. HR - .5 hr
+4. Build Resume + Profile - .5
+5. Communication Skills. - 2
+
+
+
