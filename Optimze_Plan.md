@@ -46,21 +46,32 @@ Parelly- HR/BI/Resume and Profile
 
 
 =======
-August 1 - 20
+August 
 
-1. DS - LL (2 Question) + Revision (Array + BinerySearch) 3 Question - 3 Hr
-2. LLD - 3 hr
+1. DS - LL + Recursion(2 Question) + Revision (Array + BinerySearch) 3 Question - 3 Hr
+2. LLD - 4 hr
 3. HR - .5 hr
 4. Build Resume + Profile - .5
-5. Communication Skills. - 2
+5. Communication Skills. - 1
 
-August 20 - September - 10
+September 
 
-1. DS - LL (2 Question) + Revision (Array + BinerySearch) 3 Question - 3 Hr
-2. LLD - 3 hr
-3. HR - .5 hr
-4. Build Resume + Profile - .5
-5. Communication Skills. - 2
+1. DS - Stack & Queue + Recursion (2 Question) + Revision (String + TwoPoint & Sliding Window Combined) 3 Question - 3 Hr
+2. HLD - 3 hr + Revision - LLD (1 HR)
+3. Behaviora Rounds Question - .5 hr
+4. Update Job Portals - .5
+5. Communication Skills. - 1
+
+
+October                                                                                                    
+
+1. DS - Heap + Greedy (2 Question) + Revision (LL + Array + BinerySearch) 4 Question - 3 Hr
+2. HLD - 3 hr + Revision - LLD (1 HR)
+3. Behaviora Rounds Question - .5 hr
+4. Update Job Portals - .5
+5. Communication Skills. - 1
+
+Note : Past exp and project disussion are lot of matters.
 
 
 

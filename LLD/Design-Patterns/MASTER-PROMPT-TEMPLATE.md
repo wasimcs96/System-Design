@@ -27,6 +27,12 @@ Produce the most useful possible interview-prep handbook for the **{{PATTERN_NAM
 - Write all runnable code in a **separate standalone `.php` file** (basic → good → real-world progression, heavily commented, runnable with `php file.php`, no framework dependency required). The Markdown/PDF stays theory-only and references the code file by name instead of inlining full listings.
 - End every Deep Dive part with a **2-question "before you move on" recall box** — two quick retrieval prompts answered from memory before continuing, not a full quiz. The comprehensive self-assessment lives in the Appendix.
 - If a section is genuinely not applicable or low-value for this specific pattern, say so in one line and move on — don't silently skip it, and don't force content into it either.
+- **The whole handbook is bilingual: English immediately followed by Hindi, paragraph-by-paragraph, for every part (1 through 22).** This is the same pairing rule as §5's Bilingual Source-Study Generator, applied to the Generator's own original content rather than a translated source. Concretely:
+  - Prose: every paragraph gets its English original, then its Hindi translation directly below it, before the next paragraph starts. Do not batch a whole Part's English first and append one Hindi summary at the end — pair at the paragraph/bullet level throughout, including recall-card one-liners, decision-tree branches, ADR fields, Field Notes narration, and the 2-question recall boxes.
+  - Tables: keep the table itself in English (translating every cell of large data/company/frequency tables adds bulk without interview value), but add one short Hindi caption or takeaway line directly beneath each table summarizing what it shows.
+  - Code blocks and code comments inside the companion `.php` file stay English-only — the `.php` file is not bilingual, only the Markdown/PDF handbook is. Where the handbook's prose walks through a code block, that walkthrough prose is bilingual even though the code itself is not.
+  - Headings can stay English-only (a heading in both languages adds little and clutters the table of contents); it's the body content beneath each heading that must pair.
+  - This roughly doubles a handbook's page count versus an English-only version — that's expected and is not "padding" in the sense Rule 1 warns against, since it's the same information said twice in two languages, not new content invented to hit a length target.
 
 ### Document Structure
 
@@ -78,12 +84,18 @@ Produce the most useful possible interview-prep handbook for the **{{PATTERN_NAM
 
 **Part 21 — Interview Question Bank & Coding Problems:** curated, high-signal questions across Beginner → Principal (roughly 6–10 per level, quality over a fixed quota, each with why-asked/wrong/good/excellent/follow-up — this is the one place five-tier stratification is warranted, because the question content genuinely changes by level), plus 2–3 original coding problems solvable with this pattern (solutions in the `.php` file). State the total question count actually delivered.
 
-#### 📎 APPENDIX (Part 22)
+#### 📎 APPENDIX (Part 22 + Glossaries)
 
 **Part 22 — Learning Roadmap & Self-Assessment:** ranked beginner→advanced resources (only ones that plausibly exist), plus the comprehensive MCQs, scenario questions, one refactoring exercise, and one architecture/debugging scenario with an answer key — the full-length checkpoint; the per-part boxes in the Deep Dive are the lightweight version.
 
+**End every handbook with two glossaries, after Part 22 — same dual-glossary convention as §5's bilingual studies:**
+1. **Technical Words Glossary** — domain/CS terms used anywhere in the handbook (e.g. *late static binding*, *concurrency*, *idempotency*, *Open/Closed Principle*) — English term, Hindi translation, one short example each, pulled from terms actually used in this specific handbook's own prose, not a generic pattern-vocabulary list.
+2. **General Words Glossary** — everyday English vocabulary used in the prose that a Hindi-primary reader may not know, separate from CS jargon (e.g. *unwieldy*, *compounds*, *sidestep*, *blast radius*, *thundering herd*) — same format: English word, Hindi translation, one short example sentence showing natural usage. Pull these from words actually used in this handbook's own English prose.
+
+Both glossaries use the same table format as §5: `| English Term | Hindi Translation | Example |`. Never skip this step — a bilingual handbook without glossaries is incomplete under this template, the same way a bilingual source-study without them would be.
+
 ### Final Instruction
-Generate a professional, interview-day-usable handbook — not a beginner blog post, and not a reference manual optimized for completeness over usefulness. Deliver as: one Markdown + PDF (this structure, Fast Track before Deep Dive) and one standalone `.php` file (all code, heavily commented, runnable). Save both into `<Category> Design Patterns/{{PATTERN_NAME}}/` (e.g. `Creational Design Patterns/Prototype/`, `Behavioral Design Patterns/Strategy/`) — match the pattern to its GoF category folder. If this pattern's real-world/interview footprint is thin, the resulting document should honestly be shorter than a high-frequency pattern's — do not pad to match.
+Generate a professional, interview-day-usable handbook — not a beginner blog post, and not a reference manual optimized for completeness over usefulness. The handbook is **bilingual English+Hindi throughout** (see the pairing rule above) and **ends with a Technical Words Glossary and a General Words Glossary** (see Part 22's glossary rule above) — the companion `.php` file is neither bilingual nor glossaried. Deliver as: one Markdown + PDF (this structure, Fast Track before Deep Dive, bilingual, glossaries at the very end) and one standalone `.php` file (all code, heavily commented, runnable, English-only). Hindi renders correctly in the PDF only with a Devanagari-capable font — e.g. Noto Sans Devanagari loaded via `@font-face`/woff2 in the PDF build step, same as §5's bilingual studies. Save both into `<Category> Design Patterns/{{PATTERN_NAME}}/Claude/` (e.g. `Creational Design Patterns/Prototype/Claude/`, `Behavioral Design Patterns/Strategy/Claude/`) — `Claude` is this Generator's own output, sitting as a sibling folder next to each external source-study's `{{SOURCE_NAME}}/` folder from §5, so every one of the pattern's documents (Claude's own handbook, a RefactoringGuru study, an AlgoMaster study, etc.) is equally one named subfolder under the pattern, with nothing left loose in the pattern root. If this pattern's real-world/interview footprint is thin, the resulting document should honestly be shorter than a high-frequency pattern's — do not pad to match.
 
 ---
 
@@ -157,9 +169,9 @@ Save under the pattern's existing folder, one subfolder per source — **every**
 - `{{SOURCE_NAME}}` is the source site's name in PascalCase/no-spaces form (e.g. `RefactoringGuru`, `AlgoMaster`, `GeeksforGeeks`).
 - Three files live inside that subfolder: `{{PATTERN_NAME}}-{{SOURCE_NAME}}-Bilingual-Study.md`, the matching `.pdf`, and a standalone companion code file.
 - **Companion code file naming:** `{{source_key}}_{{pattern_key}}.php`, all lowercase, snake_case, no capitals — `{{source_key}}` is a short lowercase handle for the source (`refactor` for RefactoringGuru, `algomaster` for AlgoMaster, etc.) and `{{pattern_key}}` is the pattern name lowercased (`prototype`, `singleton`, `factory-method`, ...). Examples already in use: `refactor_prototype.php` / `algomaster_prototype.php` in `Prototype/RefactoringGuru/` and `Prototype/AlgoMaster/`; `refactor_singleton.php` / `algomaster_singleton.php` in `Singleton/RefactoringGuru/` and `Singleton/AlgoMaster/`. Apply the same `{{source_key}}_{{pattern_key}}.php` shape for every new source added later (e.g. a GeeksforGeeks study would use `gfg_{{pattern_key}}.php`).
-- The pattern's root folder (`{{PATTERN_NAME}}/`) is reserved for the main interview-prep handbook (§1) and its companion code file only — never for a source-study, so the two document types stay visually separated in a folder listing.
+- The pattern's root folder (`{{PATTERN_NAME}}/`) holds no files directly at all — every deliverable, including the Document Generator's own main handbook (§1, saved under `{{PATTERN_NAME}}/Claude/`), lives one level down inside a named subfolder. `Claude` is simply this Generator's own "source name," symmetric with `RefactoringGuru` and `AlgoMaster`.
 
-This keeps multiple source-studies of the same pattern side by side without overwriting each other, and keeps them clearly separated from the main interview-prep handbook produced by the Document Generator (§1).
+This keeps every document — Claude's own handbook and every external source-study — side by side as equal, clearly labeled siblings under the pattern folder, none of them overwriting or ambiguous against another.
 
 ---
 
@@ -178,21 +190,32 @@ Run the Reviewer as a fresh subagent/session whenever possible — the whole val
 
 ## Folder Convention
 
-Every pattern's deliverables (`.md`, `.pdf`, `.php`) live under its GoF category, one folder per pattern. Bilingual source-studies (§5) live inside that same pattern folder, one subfolder per external source:
+Every pattern's deliverables (`.md`, `.pdf`, `.php`) live under its GoF category, one folder per pattern, and — as of the Factory Method pattern onward — every single deliverable lives inside a named subfolder, never loose in the pattern root. `Claude/` holds the Document Generator's own main handbook (§1); every external source-study (§5) gets its own sibling subfolder next to it:
 
 ```
 Creational Design Patterns/
   Singleton/
-  Factory/
+    Claude/
+      Singleton-Design-Pattern-Guide.md/.pdf     <- main handbook (Generator, §1), bilingual English+Hindi (retrofitted)
+      Singleton.php                               <- companion code file, English-only, unchanged
+    RefactoringGuru/ ...
+    AlgoMaster/ ...
   Prototype/
-    Prototype-Design-Pattern-Guide.md/.pdf      <- main handbook (Generator, §1)
-    Prototype.php                                <- companion code file
+    Claude/
+      Prototype-Design-Pattern-Guide.md/.pdf     <- main handbook (Generator, §1), bilingual English+Hindi (retrofitted)
+      Prototype.php                               <- companion code file, English-only, unchanged
+    RefactoringGuru/ ...
+    AlgoMaster/ ...
+  Factory/
+    Claude/
+      Factory-Design-Pattern-Guide.md/.pdf        <- main handbook (Generator, §1), bilingual English+Hindi (retrofitted)
+      Factory.php                                  <- companion code file, English-only, unchanged
     RefactoringGuru/
-      Prototype-RefactoringGuru-Bilingual-Study.md/.pdf   <- source-study, own subfolder (§5)
-      refactor_prototype.php                              <- source-study's companion code file (§5)
+      Factory-RefactoringGuru-Bilingual-Study.md/.pdf   <- source-study, own subfolder (§5)
+      refactor_factory-method.php                        <- source-study's companion code file (§5)
     AlgoMaster/
-      Prototype-AlgoMaster-Bilingual-Study.md/.pdf         <- source-study, own subfolder (§5)
-      algomaster_prototype.php                             <- source-study's companion code file (§5)
+      Factory-AlgoMaster-Bilingual-Study.md/.pdf         <- source-study, own subfolder (§5)
+      algomaster_factory-method.php                       <- source-study's companion code file (§5)
   Builder/
   Abstract-Factory/
 Structural Design Patterns/
@@ -204,5 +227,9 @@ Behavioral Design Patterns/
   Observer/
   ...
 ```
+
+Every pattern generated from here on follows this shape from day one: nothing loose in the pattern root, `Claude/` for the Generator's own handbook, one sibling subfolder per external source-study.
+
+**Note on bilingual handbooks:** every `Claude/` (or pre-migration root-level) main handbook — Singleton, Prototype, Factory, and every pattern generated from here on — is bilingual English+Hindi throughout, per §1's pairing rule, and ends with a Technical Words Glossary + General Words Glossary, per §1's Part 22 glossary rule. Only the main handbook `.md`/`.pdf` is bilingual/glossaried; every companion `.php` file (Generator's own and every source-study's) stays English-only code with English-only comments.
 
 This file (`MASTER-PROMPT-TEMPLATE.md`) and `design-patterns-frequency-guide-expanded.md` stay at the repo root — shared infrastructure, not pattern-specific.
