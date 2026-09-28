@@ -20,7 +20,7 @@ class NonWalkableRobot implements Walkable
         echo "Cannot walk.\n";
     }
 }   
-
+###############
 interface Taklable
 {
     public function talk();
@@ -41,7 +41,7 @@ class HindiSpeaker implements Taklable
         echo "नमस्ते!\n";
     }
 }
-
+###############
 
 interface Flyable
 {
@@ -63,7 +63,7 @@ class FlyableWithDroneRobot implements Flyable
         echo "Flying with drone...\n";
     }
 }
-
+###############
 class Robot implements Walkable, Taklable, Flyable
 {
     private $walkable;

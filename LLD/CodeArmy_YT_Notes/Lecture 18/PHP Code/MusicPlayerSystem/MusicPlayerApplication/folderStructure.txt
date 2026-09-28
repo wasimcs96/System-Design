@@ -1,0 +1,42 @@
+MusicPlayerApplication/            # namespace MusicPlayerApplication
+│   Main.php                       # Composition root and entry point  (run: php Main.php)
+│   MusicPlayerApplication.php     # High-level application/demo runner
+│   MusicPlayerFacade.php          # Facade class (orchestrator)
+│
+├── core/
+│   └── AudioEngine.php            # Playback engine
+│
+├── strategies/
+│   ├── PlayStrategy.php           # interface + PlayStrategyDefaults trait (Java "default" method)
+│   ├── SequentialPlayStrategy.php
+│   ├── RandomPlayStrategy.php
+│   └── CustomQueueStrategy.php
+│
+├── enums/                         # All shared enum types (PHP 8.1+ native enums)
+│   ├── DeviceType.php             # enum DeviceType { BLUETOOTH, WIRED, HEADPHONES }
+│   └── PlayStrategyType.php       # enum PlayStrategyType { SEQUENTIAL, RANDOM, CUSTOM_QUEUE }
+│
+├── models/
+│   ├── Song.php
+│   └── Playlist.php
+│
+├── device/                        # Audio device interfaces & adapters
+│   ├── IAudioOutputDevice.php
+│   ├── WiredSpeakerAdapter.php
+│   ├── HeadphonesAdapter.php
+│   └── BluetoothSpeakerAdapter.php
+│
+├── external/                      # External devices
+│   ├── WiredSpeakerAPI.php
+│   ├── HeadphonesAPI.php
+│   └── BluetoothSpeakerAPI.php
+│
+├── factories/
+│   └── DeviceFactory.php          # Creates IAudioOutputDevice instances
+│
+└── managers/
+    ├── PlaylistManager.php
+    ├── StrategyManager.php
+    └── DeviceManager.php
+
+Requires PHP 8.1+ (native enums).

@@ -433,3 +433,33 @@ echo "  Total charges: " . count($fakePayment->charges) . "\n";
  * │   Prefer constructor injection (explicit) over service locator. │
  * └─────────────────────────────────────────────────────────────────┘
  */
+
+
+interface DataBaseSave{
+    public function save()
+}
+
+class Mysql{
+     public function save(){
+        return 'save inot Mysql'
+     }
+}
+
+class Mongo{
+     public function save(){
+        return 'save inot MOngo'
+     }
+}
+
+class UserServie{
+    public DataBaseSave $database;
+
+    public function __construct($database){
+        $this->database = $database;
+    }
+
+    function saveUser($userData){
+        $this->database->save($userData);
+    }
+
+}

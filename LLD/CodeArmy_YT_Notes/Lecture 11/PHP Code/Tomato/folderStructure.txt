@@ -1,0 +1,37 @@
+OnlineFoodOrderingSystem/
+│
+├── Main.php                     # Composition root and entry point  (run: php Main.php)
+├── TomatoApp.php                # Facade class (main orchestrator)
+│
+├── models/                      # namespace Models
+│   ├── MenuItem.php
+│   ├── Restaurant.php
+│   ├── User.php
+│   ├── Cart.php
+│   ├── Order.php                # Abstract Order
+│   ├── DeliveryOrder.php
+│   ├── PickupOrder.php
+│
+├── managers/                    # namespace Managers
+│   ├── RestaurantManager.php
+│   ├── OrderManager.php
+│
+├── strategies/                  # namespace Strategies
+│   ├── PaymentStrategy.php      # Interface
+│   ├── CreditCardPaymentStrategy.php
+│   ├── UpiPaymentStrategy.php
+│
+├── factories/                   # namespace Factories
+│   ├── OrderFactory.php         # Abstract factory (interface)
+│   ├── NowOrderFactory.php
+│   ├── ScheduledOrderFactory.php
+│
+├── services/                    # namespace Services
+│   └── NotificationService.php
+│
+├── utils/                       # namespace Utils
+│   └── TimeUtils.php
+
+Note: Java "package" == PHP "namespace". Java "import" == PHP "use" + require_once
+(no Composer autoloader needed; every file require_once's what it depends on,
+so each file can also be run on its own with `php <file>.php`).

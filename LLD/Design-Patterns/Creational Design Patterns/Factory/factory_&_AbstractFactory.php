@@ -3,6 +3,7 @@
 interface Burger{
     public function prepare();
 }
+########
 class BasicBurger implements Burger{
     public function prepare(){
         echo "Basic Burger is preparring....";
@@ -18,6 +19,7 @@ class PremiumBurger implements Burger{
         echo "Premium Burger is preparring....";
     }
 }
+########
 class BasicNonVegBurger implements Burger{
     public function prepare(){
         echo "Basic NonVeg Burger is preparring....";
@@ -33,9 +35,12 @@ class PremiumNonVegBurger implements Burger{
         echo "Premium NonVeg Burger is preparring....";
     }
 }
+##########
+
 interface Pizza{
     public function prepare();
 }
+######
 class BasicVegPizaa implements Pizza{
     public function prepare(){
         echo "Basic Veg Pizaa is preparing..";
@@ -51,7 +56,7 @@ class PremiumVegPizaa implements Pizza{
         echo "Premium Veg Pizaa is preparing..";
     } 
 }
-
+#######
 class BasicNonVegPizaa implements Pizza{
     public function prepare(){
         echo "Basic Non Veg Pizaa is preparing..";
@@ -67,7 +72,7 @@ class PremiumNonVegPizaa implements Pizza{
         echo "Premium NON Veg Pizaa is preparing..";
     } 
 }
-
+#####
 
 //Simple Factory
 class SimpleBurgerFactory{
@@ -138,15 +143,15 @@ interface Meal{
 }
 
 class VegMeal implements Meal {
-    public string $burgerType;
+    public string $mealType;
 
     public function __construct(string $type){
-        $this->burgerType = $type;
+        $this->mealType = $type;
     } 
 
     public function createBurger(): ?Burger
     {
-        Switch($this->burgerType){
+        Switch($this->mealType){
             case "Simple":    return new BasicBurger();
             case "Standered": return new StanderedBurger();
             case "Premium":   return new PremiumBurger();
@@ -156,7 +161,7 @@ class VegMeal implements Meal {
 
     public function createPizza(): ?Pizza
     {
-        Switch($this->burgerType){
+        Switch($this->mealType){
             case "Simple":    return new BasicVegPizaa();
             case "Standered": return new StanderedVegPizaa();
             case "Premium":   return new PremiumVegPizaa();
@@ -165,15 +170,15 @@ class VegMeal implements Meal {
     }
 }
 class NonVegMeal implements Meal {
-    public string $burgerType;
+    public string $mealType;
 
     public function __construct(string $type){
-        $this->burgerType = $type;
+        $this->mealType = $type;
     } 
 
     public function createBurger(): ?Burger
     {
-        Switch($this->burgerType){
+        Switch($this->mealType){
             case "Simple":    return new BasicNonVegBurger();
             case "Standered": return new StanderedNonVegBurger();
             case "Premium":   return new PremiumNonVegBurger();
@@ -183,7 +188,7 @@ class NonVegMeal implements Meal {
 
     public function createPizza(): ?Pizza
     {
-        Switch($this->burgerType){
+        Switch($this->mealType){
             case "Simple":    return new BasicNonVegPizaa();
             case "Standered": return new StanderedNonVegPizaa();
             case "Premium":   return new PremiumNonVegPizaa();
