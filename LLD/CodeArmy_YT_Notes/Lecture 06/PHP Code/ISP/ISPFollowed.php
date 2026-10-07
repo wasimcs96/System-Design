@@ -7,7 +7,7 @@ interface TwoDimensionalShape
 }
 
 // Separate interface for 3D shapes
-interface ThreeDimensionalShape
+interface ThreeDimensionalShape 
 {
     public function area(): float;
     public function volume(): float;

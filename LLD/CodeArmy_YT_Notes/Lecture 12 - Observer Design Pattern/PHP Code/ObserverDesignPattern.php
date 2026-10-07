@@ -1,6 +1,6 @@
 <?php
 
-interface ISubscriber
+interface ISubscriber 
 {
     public function update(): void;
 }

@@ -14,7 +14,7 @@ class Mario implements Character
         return "Mario";
     }
 }
-
+ 
 // Abstract Decorator: CharacterDecorator "is-a" Character and "has-a" Character.
 abstract class CharacterDecorator implements Character
 {

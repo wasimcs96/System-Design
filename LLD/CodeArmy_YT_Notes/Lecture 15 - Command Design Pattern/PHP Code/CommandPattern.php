@@ -1,13 +1,6 @@
 <?php
 
-// ----------------------------
-// Command Interface
-// ----------------------------
-interface Command
-{
-    public function execute(): void;
-    public function undo(): void;
-}
+
 
 // ----------------------------
 // Receivers
@@ -36,6 +29,15 @@ class Fan
     {
         echo "Fan is OFF" . PHP_EOL;
     }
+}
+
+// ----------------------------
+// Command Interface
+// ----------------------------
+interface Command
+{
+    public function execute(): void;
+    public function undo(): void;
 }
 
 // ----------------------------

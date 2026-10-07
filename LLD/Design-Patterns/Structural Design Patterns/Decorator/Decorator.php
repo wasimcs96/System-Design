@@ -7,7 +7,7 @@ interface Car{
 
 class InternationalBrandCar implements Car{
     public function getAssembleDescription() :string{
-        return "German Engine";
+        return "German Cars With ";
     }
     public function getCost() :float{
         return 10000;
@@ -16,16 +16,25 @@ class InternationalBrandCar implements Car{
 
 class LocalBrandCar implements Car{
     public function getAssembleDescription() :string{
-        return "Local Engine";
+        return "Local Cars With ";
     }
     public function getCost() :float{
         return 5000;
     }
 }
 
-class CarDecorater implements Car{
-    public function __construct(Protected Car $car){
+abstract class Decorator implements Car{
+    protected Car $car;
+
+    public function __construct(Car $car){
         $this->car = $car;
+    }
+}
+
+class CarDecorater extends Decorator{
+
+    public function __construct(Car $car){
+        Parent::__construct($car);
     }
 
     public function getAssembleDescription() :string{
@@ -38,31 +47,33 @@ class CarDecorater implements Car{
 
 class SunRoofCarDecorator extends CarDecorater{
     public function getAssembleDescription() :string{
-        return parent::getAssembleDescription() . " + Sun Roof";
+        return $this->car->getAssembleDescription() . "Sun Roof";
     }
     public function getCost() :float{
-        return parent::getCost() + 1000;
+        return $this->car->getCost() + 100;
     }
 }
 
 class AutoPilotCarDecorator extends CarDecorater{
     public function getAssembleDescription() :string{
-        return parent::getAssembleDescription() . "  + Auto Pilot";
+        return $this->car->getAssembleDescription(). " and Autopilot";
     }
     public function getCost() :float{
-        return parent::getCost() + 1500;
+        return $this->car->getCost() + 50;
     }
 }
 
 class AutoCloseGateCarDecorator extends CarDecorater{
     public function getAssembleDescription() :string{
-        return parent::getAssembleDescription() . " + Auto Close Gate";
+        return $this->car->getAssembleDescription() ." + AutoCloase Gate";
     }
-    public function getCost() :float {
-        return parent::getCost() + 2000;
+    public function getCost() :float{
+        return $this->car->getCost() + 100;
     }
 }
 
-$brandCar = new AutoCloseGateCarDecorator(new AutoPilotCarDecorator(new SunRoofCarDecorator(new InternationalBrandCar())));
+$brandCar = new AutoCloseGateCarDecorator(
+                new AutoPilotCarDecorator(
+                        new InternationalBrandCar()));
 echo "Car Description: " . $brandCar->getAssembleDescription() . "\n";
 echo "Car Cost: " . $brandCar->getCost() . "\n";
